@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use App\Http\Requests\StoreCommentRequest;
 use App\Http\Requests\UpdateCommentRequest;
+use App\Models\Product;
 
 class CommentController extends Controller
 {
@@ -17,7 +18,6 @@ class CommentController extends Controller
     {
         $comments = Comment::paginate(10);
         return view('adminDashboard.mangeComments',compact('comments'));
-
     }
 
     /**
@@ -47,9 +47,11 @@ class CommentController extends Controller
      * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function show(Comment $comment)
+    public function show($id)
     {
-        //
+       $comments     = Comment::where('product_id',$id)->paginate(15);
+       $product_name = Product::where('id',$id)->first();
+       return view('adminDashboard.mangeOwnerComments',compact('comments','product_name'));
     }
 
     /**

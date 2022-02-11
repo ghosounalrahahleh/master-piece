@@ -16,6 +16,7 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->string('status')->default('pending');
+            $table->integer('total_price');
             $table->foreignId('user_id')
                 ->unsigned()
                 ->references('id')

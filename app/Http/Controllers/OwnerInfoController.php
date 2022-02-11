@@ -57,10 +57,11 @@ class OwnerInfoController extends Controller
         OwnerInfo::create(
             [
                 "company_name" => $request->company_name,
-                "email" => $request->email,
-                "phone" => $request->phone,
+                "email"   => $request->email,
+                "phone"   => $request->phone,
                 "address" => $request->address,
-                "logo" => 'images/' . $new_file,
+                "logo"    => 'images/' . $new_file,
+                "user_id" => $request->user_id,
             ]
         );
         session()->flash('message', "The Owner has been added successfully");
@@ -120,7 +121,7 @@ class OwnerInfoController extends Controller
         $owner->email        = $request->email;
         $owner->phone        = $request->phone;
         $owner->address      = $request->address;
-
+        $owner->user_id      = $request->user_id;
         $owner->update();
         session()->flash('message', "The Owner has been updated successfully");
         return redirect()->route('owners.index');

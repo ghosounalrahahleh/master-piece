@@ -27,8 +27,10 @@ class CreateOrderDetailsTable extends Migration
                 ->on('products')
                 ->onDelete('cascade');
             $table->integer('quantity');
-            $table->integer('size');
-            $table->integer('color');
+            $table->string('size');
+            $table->string('color');
+            $table->integer('price');
+            $table->string('status')->default('Pending');
             $table->timestamps();
         });
     }

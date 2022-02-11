@@ -15,12 +15,12 @@
                     <div class="table-responsive p-0">
                         <table class="table align-items-center justify-content-center mb-0 ">
                             <thead>
-                                <th class="text-uppercase font-weight-bolder">#</th>
-                                <th class="text-uppercase font-weight-bolder"> user Name</th>
-                                <th class="text-uppercase font-weight-bolder"> Product Name</th>
-                                <th class="text-uppercase font-weight-bolder"> Product Image</th>
-                                <th class="text-uppercase font-weight-bolder"> comment Content</th>
-                                <th class="text-uppercase font-weight-bolder"> comment Rate</th>
+                                <th class=" font-weight-bolder">#</th>
+                                <th class=" font-weight-bolder"> user Name</th>
+                                <th class=" font-weight-bolder"> Product Name</th>
+                                <th class=" font-weight-bolder"> Product Image</th>
+                                <th class=" font-weight-bolder"> comment Content</th>
+                                <th class=" font-weight-bolder"> comment Rate</th>
                                 <th></th>
                             </thead>
                             <tbody>

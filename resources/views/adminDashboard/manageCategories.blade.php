@@ -92,11 +92,11 @@
                     <div class="table-responsive p-0">
                         <table class="table align-items-center mb-0 ">
                             <thead>
-                                <th class="text-uppercase font-weight-bolder"> #</th>
-                                <th class="text-uppercase font-weight-bolder"> Category Name</th>
-                                <th class="text-uppercase font-weight-bolder"> Category Image</th>
-                                <th class="text-uppercase font-weight-bolder"> </th>
-                                <th class="text-uppercase font-weight-bolder"> </th>
+                                <th class="font-weight-bolder"> #</th>
+                                <th class="font-weight-bolder"> Category Name</th>
+                                <th class="font-weight-bolder"> Category Image</th>
+                                <th class="font-weight-bolder"> </th>
+                                <th class="font-weight-bolder"> </th>
                             </thead>
                             <tbody>
                                 @foreach ($categories as $category)

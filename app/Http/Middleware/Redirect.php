@@ -19,6 +19,8 @@ class Redirect
         if (Auth::check()) {
             if(auth()->user()->role_id == 1){
                 return $next($request);
+            }else if(auth()->user()->role_id == 2){
+                return $next($request);
             }
         }
         return redirect()->route('login');

@@ -16,9 +16,23 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $update = false;
-        $orders = Order::paginate(15);
-        return view('adminDashboard.manageOrders',compact('orders', 'update'));
+        $update   = false;
+        $orders   = [];
+
+        if (auth()->user()->role_id === 2) {
+            $ordersDetails = OrderDetail::all();
+            foreach ($ordersDetails as $order) {
+                if ($order->product->owner_id == auth()->user()->id) {
+                    array_push($orders, $order);
+                }
+            }
+            return view('adminDashboard.manageOwnerOrders', compact('orders', 'update'));
+        } else {
+
+            $orders = Order::orderBy('id', 'desc')->paginate(15);
+            return view('adminDashboard.manageOrders', compact('orders', 'update'));
+        }
+
 
     }
 
@@ -51,7 +65,6 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-      
     }
 
     /**
@@ -62,10 +75,23 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        $order   = Order::find($id);
-        $orders  = Order::paginate(15);
-        $update = true;
-        return view('adminDashboard.manageOrders', compact('order', 'update', 'orders'));
+        $orders    = [];
+        $update    = true;
+        if (auth()->user()->role_id === 2) {
+            $ordersDetails = OrderDetail::all();
+            foreach ($ordersDetails as $order) {
+                if ($order->product->owner_id == auth()->user()->id) {
+                    array_push($orders, $order);
+                }
+            }
+            $order = OrderDetail::find($id);
+            return view('adminDashboard.manageOwnerOrders', compact('orders', 'update', 'order'));
+        } else {
+            $orders  = Order::orderBy('id', 'desc')->paginate(15);
+            $order   = Order::find($id);
+            return view('adminDashboard.manageOrders', compact('order', 'update', 'orders'));
+        }
+
     }
 
     /**

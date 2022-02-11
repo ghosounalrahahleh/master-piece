@@ -29,15 +29,15 @@ class CreateProductsTable extends Migration
             $table->string('size');
             $table->integer('quantity');
             $table->foreignId('owner_id')
-                ->unsigned()
-                ->references('id')
-                ->on('owner_infos')
-                ->onDelete('cascade');
+                  ->unsigned()
+                  ->references('id')
+                  ->on('users')
+                  ->onDelete('cascade');
             $table->foreignId('category_id')
-                ->unsigned()
-                ->references('id')
-                ->on('categories')
-                ->onDelete('cascade');
+                  ->unsigned()
+                  ->references('id')
+                  ->on('categories')
+                  ->onDelete('cascade');
             $table->timestamps();
         });
     }

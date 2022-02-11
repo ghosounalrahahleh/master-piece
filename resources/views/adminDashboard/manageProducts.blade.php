@@ -1,7 +1,14 @@
 @extends('adminDashboard.layouts.master')
 
 @section('content')
-<div class="container-fluid py-4">
+<div class="container-fluid pb-4">
+    {{-- <nav aria-label="breadcrumb ">
+        <ol class="breadcrumb bg-transparent mb-3 pb-0 pt-1 px-0 me-sm-6 me-5">
+            <li class="breadcrumb-item text-sm"><a class="opacity-9 text-dark" href="{{ route('statics.index') }}">Dashboard &nbsp; </a>
+            </li>
+            <a href="{{ route('products.index') }}"><li class="breadcrumb-item text-sm text-dark active opacity-9" aria-current="page"> / Products</li></a>
+        </ol>
+    </nav> --}}
     <div class="row justify-content-center">
         {{-- Form Start --}}
         <div class="col-lg-12 col-md-8 col-12 mx-auto my-5">
@@ -102,7 +109,7 @@
                                 </div>
                             </div>
                         </div>
-                        <input type="hidden" name="owner_id" value="1">
+                        <input type="hidden" name="owner_id" value="{{ auth()->user()->id }}">
                         <div class="row">
                             <div class="col-4">
                                 <div class="input-group input-group-outline mb-3">
@@ -213,15 +220,16 @@
                         <table class="table align-items-center mb-0 ">
                             <thead>
                                 <tr>
-                                    <th class="text-uppercase font-weight-bolder"> Product image</th>
-                                    <th class="text-uppercase font-weight-bolder"> Product Name</th>
-                                    <th class="text-uppercase font-weight-bolder"> Product Price</th>
-                                    <th class="text-uppercase font-weight-bolder"> On Sale </th>
-                                    <th class="text-uppercase font-weight-bolder"> Is New </th>
-                                    <th class="text-uppercase font-weight-bolder"> Owner </th>
-                                    <th class="text-uppercase font-weight-bolder"> Category </th>
-                                    <th class="text-uppercase font-weight-bolder"></th>
-                                    <th class="text-uppercase font-weight-bolder"></th>
+                                    <th class=" font-weight-bolder"> Product image</th>
+                                    <th class=" font-weight-bolder"> Product Name</th>
+                                    <th class=" font-weight-bolder"> Price</th>
+                                    <th class=" font-weight-bolder"> On Sale </th>
+                                    <th class=" font-weight-bolder"> Is New </th>
+                                    <th class=" font-weight-bolder"> Owner </th>
+                                    <th class=" font-weight-bolder"> Category </th>
+                                    <th class=" font-weight-bolder"></th>
+                                    <th class=" font-weight-bolder"></th>
+                                    <th class=" font-weight-bolder"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -233,9 +241,14 @@
                                     <td class="ps-4">{{ $product->price }} </td>
                                     <td class="ps-4"> {{ $product->is_onSale }}</td>
                                     <td class="ps-4"> {{ $product->is_new}}</td>
-                                    <td class="ps-4"> {{ $product->owner->company_name}}</td>
+                                    <td class="ps-4"> {{ $product->owner->name}}</td>
                                     <td class="ps-4"> {{ $product->category->name}}</td>
-                                    <td class="ps-4 pe-0  text-right">
+                                    <td class="ps-4 pe-0  text-right"> <a
+                                            class="btn btn-link text-dark text-gradient px-3 mb-0"
+                                            href="{{ route('comments.show',$product->id) }}">
+                                            <i class="fas fa-eye h6"></i>
+                                        </a></td>
+                                    <td class=" pe-0  text-right">
                                         <a class="btn btn-link text-dark text-gradient px-3 mb-0"
                                             href="{{ route('products.edit',$product->id) }}">
                                             <i class="fas fa-edit h6"></i>

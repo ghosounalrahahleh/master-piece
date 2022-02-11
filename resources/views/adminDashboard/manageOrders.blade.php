@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid py-4">
     <div class="row">
-        @if ($update === true)
+            @if ($update === true)
         <div class="col-lg-12 col-md-8 col-12 mx-auto my-5">
 
             {{-- Operation Message --}}
@@ -80,9 +80,7 @@
         </div> @endif
         {{-- Form End --}}
 
-
-
-        {{--Orders Table Start --}}
+        {{-- Table Start --}}
         <div class="col-12 ">
             <div class="card my-4">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
@@ -94,9 +92,9 @@
                     <div class="table-responsive p-0">
                         <table class="table align-items-center justify-content-center mb-0 ">
                             <thead>
-                                <th class="text-uppercase font-weight-bolder">#</th>
-                                <th class="text-uppercase font-weight-bolder"> User Name</th>
-                                <th class="text-uppercase font-weight-bolder"> Order Status</th>
+                                <th class="font-weight-bolder">#</th>
+                                <th class="font-weight-bolder"> User Name</th>
+                                <th class="font-weight-bolder"> Order Status</th>
                                 <th></th>
                                 <th></th>
                             </thead>
@@ -110,10 +108,10 @@
                                             class="fas fa-spinner h6 text-warning ps-2"></i> </td>
                                     @else
                                     <td class="ps-4 rounded text-success">{{ $order->status }} <i
-                                            class="fas fa-check h6 text-success ps-2"></i></td>
+                                            class="fas fa-check h6 text-success ps-2" ></i></td>
                                     @endif
-                                    <td class="ps-4 pe-0  text-right">
-                                        <a class="btn btn-link text-dark text-gradient px-3 mb-0" id="eye-show"
+                                    <td class=" ps-4 pe-0  text-right">
+                                        <a class="btn btn-link text-dark text-gradient px-3 mb-0"
                                             href="{{ route('ordersDetails.show',$order->id) }}">
                                             <i class="fas fa-eye h6"></i>
                                         </a>

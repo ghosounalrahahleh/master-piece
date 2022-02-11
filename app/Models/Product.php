@@ -22,12 +22,12 @@ class Product extends Model
 
     public function orderDetail()
     {
-        return $this->belongsTo(OrderDetail::class);
+        return $this->hasOne(OrderDetail::class);
     }
 
     public function owner()
     {
-        return $this->belongsTo(OwnerInfo::class);
+        return $this->belongsTo(User::class);
 
     }
 }

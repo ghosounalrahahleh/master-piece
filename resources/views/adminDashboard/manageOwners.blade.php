@@ -42,6 +42,7 @@
                         action="@if($update === true){{ route('owners.update',$owner->id) }} @else {{ route('owners.store') }} @endif"
                         enctype="multipart/form-data">
                         @csrf
+                        <input type="hidden" name="user_id" value="2">
                         <div class=" input-group input-group-outline my-3">
                             <label class="form-label"></label>
                             <input type="text" name="company_name" class="form-control" placeholder="Company Name"
@@ -116,11 +117,11 @@
                         <table class="table align-items-center mb-0 ">
                             <thead>
                                 <tr>
-                                    <th class="text-uppercase font-weight-bolder">Company Logo</th>
-                                    <th class="text-uppercase font-weight-bolder"> Company Name</th>
-                                    <th class="text-uppercase font-weight-bolder"> Company Email</th>
-                                    <th class="text-uppercase font-weight-bolder"> Company Phone</th>
-                                    <th class="text-uppercase font-weight-bolder"> Company Address</th>
+                                    <th class=" font-weight-bolder">Company Logo</th>
+                                    <th class=" font-weight-bolder"> Company Name</th>
+                                    <th class=" font-weight-bolder"> Company Email</th>
+                                    <th class=" font-weight-bolder"> Company Phone</th>
+                                    <th class=" font-weight-bolder"> Company Address</th>
                                     <th></th>
                                     <th></th>
 

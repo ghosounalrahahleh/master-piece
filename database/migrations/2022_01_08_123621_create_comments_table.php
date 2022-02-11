@@ -27,6 +27,7 @@ class CreateCommentsTable extends Migration
                 ->onDelete('cascade');
             $table->integer('rate');
             $table->string('content');
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
     }

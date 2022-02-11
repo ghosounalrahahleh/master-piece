@@ -13,6 +13,11 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\OwnerInfoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\ownerDashboardController;
+use App\Http\Controllers\OwnerOrderController;
+use App\Http\Controllers\OwnerCommentController;
+use App\Http\Controllers\OwnerProductController;
+;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -53,9 +58,18 @@ Route::group(['middleware' => 'redirect'], function () {
     Route::get('/admin/profile', function () {
         return view('adminDashboard.adminProfile');
     })->name('admin.profile');
-
 });
 
+Route::group(['middleware' => 'redirect'], function () {
+    //Owner Dashboard Products Routes
+    Route::resource('ownerProducts', OwnerProductController::class);
+    //Owner Dashboard Orders Routes
+    Route::resource('ownerOrders', OwnerOrderController::class);
+    //Owner Dashboard Comments Routes
+    Route::resource('ownerComments', OwnerCommentController::class);
+    //Main Dashboard Page
+    Route::resource('ownerStatics', OwnerDashboardController::class);
+});
 Route::get('admin/dashboard', [HomeController::class, 'adminDashboard'])->name('admin.dashboard')->middleware('is_admin');
 Route::get('owner/dashboard', [HomeController::class, 'ownerDashboard'])->name('owner.dashboard')->middleware('is_owner');
 

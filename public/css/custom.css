@@ -11,7 +11,10 @@
     border-color: #472965 !important;
     box-shadow: inset 1px 0 #9c41ec, inset -1px 0 #9c41ec, inset 0 -1px #9c41ec ,inset 0 1px #9c41ec !important;
 }
-
+.form-control:focus{
+    border-color: #472965 !important;
+    box-shadow: inset 1px 0 #9c41ec, inset -1px 0 #9c41ec, inset 0 -1px #9c41ec ,inset 0 1px #9c41ec !important;
+}
 
 .page-item.active .page-link {
     z-index: 3;

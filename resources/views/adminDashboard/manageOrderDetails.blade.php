@@ -20,13 +20,13 @@
                         <table class="table align-items-center mb-0 ">
                             <thead>
                                 <tr>
-                                    <th class="text-uppercase font-weight-bolder"> Product image</th>
-                                    <th class="text-uppercase font-weight-bolder"> Product Name</th>
-                                    <th class="text-uppercase font-weight-bolder"> Product Price</th>
-                                    <th class="text-uppercase font-weight-bolder"> Size </th>
-                                    <th class="text-uppercase font-weight-bolder"> Color </th>
-                                    <th class="text-uppercase font-weight-bolder"> Quantity </th>
-                                    <th class="text-uppercase font-weight-bolder"></th>
+                                    <th class="font-weight-bolder"> Product image</th>
+                                    <th class="font-weight-bolder"> Product Name</th>
+                                    <th class="font-weight-bolder"> Product Price</th>
+                                    <th class="font-weight-bolder"> Size </th>
+                                    <th class="font-weight-bolder"> Color </th>
+                                    <th class="font-weight-bolder"> Quantity </th>
+                                    <th class="font-weight-bolder"></th>
 
                                 </tr>
                             </thead>
@@ -41,6 +41,13 @@
                                     <td class="ps-4"> {{ $orderDetail->size}}</td>
                                     <td class="ps-4"> {{ $orderDetail->color}}</td>
                                     <td class="ps-4"> {{ $orderDetail->quantity}}</td>
+                                     @if ($orderDetail->status === 'Pending')
+                                    <td class="ps-4 rounded text-warning">{{ $orderDetail->status }} <i
+                                            class="fas fa-spinner h6 text-warning ps-2"></i> </td>
+                                    @else
+                                    <td class="ps-4 rounded text-success">{{ $orderDetail->status }} <i
+                                            class="fas fa-check h6 text-success ps-2" ></i></td>
+                                    @endif
                                     <td class="ps-4 h-100">
                                         <input type="checkbox" name="done" id="">
                                     </td>

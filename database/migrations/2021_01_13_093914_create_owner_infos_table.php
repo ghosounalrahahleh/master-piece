@@ -20,6 +20,11 @@ class CreateOwnerInfosTable extends Migration
             $table->string('email')->unique();
             $table->integer('phone');
             $table->text('address');
+            $table->foreignId('user_id')
+                ->unsigned()
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

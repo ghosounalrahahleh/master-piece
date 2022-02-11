@@ -15,11 +15,11 @@
                     <div class="table-responsive p-0">
                         <table class="table align-items-center justify-content-center mb-0 ">
                             <thead>
-                                <th class="text-uppercase font-weight-bolder">User ID</th>
-                                <th class="text-uppercase font-weight-bolder"> User Name</th>
-                                <th class="text-uppercase font-weight-bolder">  Country</th>
-                                <th class="text-uppercase font-weight-bolder">  City</th>
-                                <th class="text-uppercase font-weight-bolder">  Street</th>
+                                <th class="font-weight-bolder">User ID</th>
+                                <th class="font-weight-bolder"> User Name</th>
+                                <th class="font-weight-bolder">  Country</th>
+                                <th class="font-weight-bolder">  City</th>
+                                <th class="font-weight-bolder">  Street</th>
                             </thead>
                             <tbody>
                                 @foreach ($addresses as $address)

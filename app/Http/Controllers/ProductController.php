@@ -6,6 +6,8 @@ use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Category;
+use App\Models\Auth;
+
 
 class ProductController extends Controller
 {
@@ -16,7 +18,12 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products   = Product::orderBy('id', 'desc')->paginate(15);
+        if (auth()->user()->role_id === 2) {
+            $products   = Product::where('owner_id', auth()->user()->id)->orderBy('id', 'desc')->paginate(15);
+        } else {
+            $products   = Product::orderBy('id', 'desc')->paginate(15);
+        }
+        //dd($products);
         $categories = Category::all();
         $update     = false;
         return view('adminDashboard.manageProducts', compact('products', 'categories', 'update'));
@@ -100,7 +107,11 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $products   = Product::orderBy('id', 'desc')->paginate(15);
+        if (auth()->user()->role_id === 2) {
+            $products   = Product::where('owner_id', auth()->user()->id)->orderBy('id', 'desc')->paginate(15);
+        } else {
+            $products   = Product::orderBy('id', 'desc')->paginate(15);
+        }
         $product    = Product::find($id);
         $categories = Category::all();
         $update     = true;

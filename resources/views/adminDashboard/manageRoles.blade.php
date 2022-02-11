@@ -44,11 +44,11 @@
                     ">
                         @csrf
 
+                        <label for="role" class="form-label">Role Name</label>
+                        <div class="input-group input-group-outline mb-3 ">
 
-                        <div class="input-group input-group-outline mb-3">
-                            <label class="form-label"></label>
-                            <input type="text" name="role" class="form-control" value="@if($update==true){{ $role->role }}
-                                @endif" placeholder="Role Name">
+                            <input type="text" id="role" name="role" class="form-control" value="@if($update==true){{ $role->role }}
+                                @endif" placeholder="">
                         </div>
                         @if ($update === false)
                         <div class="row justify-content-end">

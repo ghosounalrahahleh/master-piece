@@ -119,13 +119,13 @@
                         <table class="table align-items-center mb-0 ">
                             <thead>
                                 <tr>
-                                    <th class="text-uppercase font-weight-bolder"> #</th>
-                                    <th class="text-uppercase font-weight-bolder"> User Name</th>
-                                    <th class="text-uppercase font-weight-bolder"> User Email</th>
-                                    <th class="text-uppercase font-weight-bolder"> User Role</th>
-                                    <th class="text-uppercase font-weight-bolder"> User photo</th>
-                                    <th class="text-uppercase font-weight-bolder"> </th>
-                                    <th class="text-uppercase font-weight-bolder"> </th>
+                                    <th class=" font-weight-bolder"> #</th>
+                                    <th class=" font-weight-bolder"> User Name</th>
+                                    <th class=" font-weight-bolder"> User Email</th>
+                                    <th class=" font-weight-bolder"> User Role</th>
+                                    <th class=" font-weight-bolder"> User photo</th>
+                                    <th class=" font-weight-bolder"> </th>
+                                    <th class=" font-weight-bolder"> </th>
                                 </tr>
                             </thead>
                             <tbody>

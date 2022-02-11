@@ -57,11 +57,20 @@ class User extends Authenticatable
     {
         return $this->hasMany(Order::class);
     }
-    
+
     public function comments()
     {
         return $this->hasMany(Comment::class);
     }
 
+    public function owner()
+    {
+        return $this->belongsTo(OwnerInfo::class);
+    }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 
 }

@@ -48,8 +48,10 @@ class OrderDetailController extends Controller
      */
     public function show($id)
     {
+
+       $update       = false;
        $orderDetails = OrderDetail::where('order_id', $id)->paginate(15);
-       return view('adminDashboard.manageOrderDetails', compact('orderDetails', 'id'));
+       return view('adminDashboard.manageOrderDetails', compact('orderDetails', 'id', 'update'));
     }
 
     /**
@@ -58,9 +60,9 @@ class OrderDetailController extends Controller
      * @param  \App\Models\OrderDetail  $orderDetail
      * @return \Illuminate\Http\Response
      */
-    public function edit(OrderDetail $orderDetail)
+    public function edit(OrderDetail $orderDetail,$id)
     {
-        //
+
     }
 
     /**
@@ -70,9 +72,18 @@ class OrderDetailController extends Controller
      * @param  \App\Models\OrderDetail  $orderDetail
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateOrderDetailRequest $request, OrderDetail $orderDetail)
-    {
-        //
+    public function update(UpdateOrderDetailRequest $request, $id)
+    { //dd($request->status);
+        $this->validate($request, [
+            "status" => 'required'
+        ]);
+
+        $order       = OrderDetail::find($id);
+        $order->status = $request->status;
+
+        $order->update();
+        session()->flash('message', "The order status has been updated successfully");
+       return redirect()->route('orders.index');
     }
 
     /**
