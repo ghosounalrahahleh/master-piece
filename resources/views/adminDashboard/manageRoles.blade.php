@@ -88,45 +88,49 @@
                         <h6 class="text-white text-capitalize ps-3">Roles table</h6>
                     </div>
                 </div>
-                <div class="card-body px-0 pb-2">
-                    <div class="table-responsive p-0">
-                        <table class="table align-items-center justify-content-center mb-0 ">
-                            <thead>
-                                <th class="text-uppercase font-weight-bolder">
-                                    #</th>
-                                <th class="text-uppercase font-weight-bolder">
-                                    Role Name</th>
-                                <th></th>
-                                <th></th>
-                            </thead>
-                            <tbody>
-                                @foreach ($roles as $role)
-                                <tr>
-                                    <td class="ps-4">
-                                        {{ $role->id }}
-                                    </td>
-                                    <td class="ps-4">
-                                        {{ $role->role }}
-                                    </td>
-                                    <td class=" ps-4 pe-0  text-right">
-                                        <a class="btn btn-link text-dark text-gradient px-3 mb-0"
-                                            href="{{ route('roles.edit',$role->id) }}"><i
-                                                class="fas fa-edit h6"></i></a>
-                                    </td>
-                                    <td>
-                                        <form method="POST" action="{{ route('roles.destroy',$role->id) }}">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="btn btn-link text-dark px-3 mb-0" type="submit"><i
-                                                    class="fas fa-trash h6"></i></button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                <section class="section">
+                    <div class="card">
+                        <div class="card-body">
+                            <table class="table" id="table1">
+                                <thead>
+                                    <th class="text-uppercase font-weight-bolder">
+                                        #</th>
+                                    <th class="text-uppercase font-weight-bolder">
+                                        Role Name</th>
+                                    <th></th>
+
+                                </thead>
+                                <tbody>
+                                    @foreach ($roles as $role)
+                                    <tr>
+                                        <td class="ps-4">
+                                            {{ $role->id }}
+                                        </td>
+                                        <td class="ps-4">
+                                            {{ $role->role }}
+                                        </td>
+                                        <td class=" ps-4 pe-0  text-right d-flex">
+                                            <a class="btn btn-link text-dark text-gradient px-3 mb-0"
+                                                href="{{ route('roles.edit',$role->id) }}"><i
+                                                    class="fas fa-edit h6"></i></a>
+
+                                            <form method="POST" action="{{ route('roles.destroy',$role->id) }}">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-link text-dark px-3 mb-0" type="submit"><i
+                                                        class="fas fa-trash h6"></i></button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                </div>
+
+                </section>
+
+
             </div>
         </div>
     </div>

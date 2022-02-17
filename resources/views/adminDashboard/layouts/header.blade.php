@@ -42,9 +42,33 @@
     <link id="pagestyle" href="{{ asset('css/material-dashboard.css?v=3.0.0') }}" rel="stylesheet" />
 
     <!-- Font Awesome Icons -->
-    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
-        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+     <!-- our project just needs Font Awesome Solid + Brands -->
+  <link href="/your-path-to-fontawesome/css/fontawesome.css" rel="stylesheet">
+  <link href="/your-path-to-fontawesome/css/brands.css" rel="stylesheet">
+  <link href="/your-path-to-fontawesome/css/solid.css" rel="stylesheet">
+
+        {{-- table stle Links( Maser theme) --}}
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
+
+    <!-- <link rel="stylesheet" href="assets/vendors/jquery-datatables/jquery.dataTables.min.css"> -->
+    <link rel="stylesheet" href="{{ asset('assets/vendors/jquery-datatables/jquery.dataTables.bootstrap5.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendors/fontawesome/all.min.css') }}">
+    <style>
+        table.dataTable td {
+            padding: 15px 8px;
+        }
+
+        .fontawesome-icons .the-icon svg {
+            font-size: 24px;
+        }
+    </style>
+
+    <link rel="stylesheet" href="{{ asset('assets/vendors/perfect-scrollbar/perfect-scrollbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendors/bootstrap-icons/bootstrap-icons.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}"> --}}
+    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.svg') }}" type="image/x-icon">
 
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     <link rel="stylesheet" href="{{ asset('css/adminProfile.css') }}">
@@ -66,8 +90,8 @@
         <hr class="horizontal light mt-0 mb-2">
         <div class="collapse navbar-collapse  w-auto  max-height-vh-100" id="sidenav-collapse-main">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link text-white  " href="{{ route('statics.index') }}">
+                <li class="nav-item ">
+                    <a class="nav-link text-white {{ request()->is('statics') ? 'active' : ''}} " href="{{ route('statics.index') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">dashboard</i>
                         </div>
@@ -75,50 +99,50 @@
                     </a>
                 </li>
 
-        @if (Auth::user()->role_id === 1)
-        <li class="nav-item">
-            <a class="nav-link text-white " href="{{ route('roles.index') }}">
-                <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                    <i class="material-icons opacity-10">table_view</i>
-                </div>
-                <span class="nav-link-text ms-1">Manage Roles</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-white " href="{{ route('users.index') }}">
-                <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                    <i class="material-icons opacity-10">table_view</i>
-                </div>
-                <span class="nav-link-text ms-1">Manage Users</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-white " href="{{ route('categories.index') }}">
-                <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                    <i class="material-icons opacity-10">table_view</i>
-                </div>
-                <span class="nav-link-text ms-1">Manage categories</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-white " href="{{ route('owners.index') }}">
-                <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                    <i class="material-icons opacity-10">table_view</i>
-                </div>
-                <span class="nav-link-text ms-1">Manage Owners</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-white " href="{{ route('addresses.index') }}">
-                <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                    <i class="material-icons opacity-10">assignment</i>
-                </div>
-                <span class="nav-link-text ms-1">Manage Addresses</span>
-            </a>
-        </li>
-        @endif
+                @if (Auth::user()->role_id === 1)
                 <li class="nav-item">
-                    <a class="nav-link text-white " href="{{ route('products.index') }}">
+                    <a class="nav-link text-white {{ request()->is('roles') ? 'active' : ''}} " href="{{ route('roles.index') }}">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">table_view</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Manage Roles</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white {{ request()->is('users') ? 'active' : ''}} " href="{{ route('users.index') }}">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">table_view</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Manage Users</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white {{ request()->is('categories') ? 'active' : ''}} " href="{{ route('categories.index') }}">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">table_view</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Manage categories</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white {{ request()->is('owners') ? 'active' : ''}} " href="{{ route('owners.index') }}">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">table_view</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Manage Owners</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white {{ request()->is('addresses') ? 'active' : ''}}" href="{{ route('addresses.index') }}">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">assignment</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Manage Addresses</span>
+                    </a>
+                </li>
+                @endif
+                <li class="nav-item">
+                    <a class="nav-link text-white {{ request()->is('products') ? 'active' : ''}}"  href="{{ route('products.index') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">table_view</i>
                         </div>
@@ -126,7 +150,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white " href="{{ route('orders.index') }}">
+                    <a class="nav-link text-white {{ request()->is('orders') ? 'active' : ''}}"  href="{{ route('orders.index') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">table_view</i>
                         </div>
@@ -135,7 +159,7 @@
                 </li>
                 @if (Auth::user()->role_id === 1)
                 <li class="nav-item">
-                    <a class="nav-link text-white " href="{{ route('comments.index') }}">
+                    <a class="nav-link text-white {{ request()->is('comments') ? 'active' : ''}}" href="{{ route('comments.index') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">table_view</i>
                         </div>
@@ -152,17 +176,14 @@
         <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
             navbar-scroll="true">
             <div class="container-fluid py-1 px-3">
-   
+
                 <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                     <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-                        <div class="input-group input-group-outline">
-                            <label class="form-label">Type here...</label>
-                            <input type="text" class="form-control">
-                        </div>
+
                     </div>
                     <ul class="navbar-nav  justify-content-end">
                         <li class="nav-item d-flex align-items-center">
-                            <a href="/admin/profile" class="nav-link text-body font-weight-bold px-0">
+                            <a href="{{ route('profiles.index') }}" class="nav-link text-body font-weight-bold px-0">
                                 <i class="fa fa-user me-sm-1"></i>
                                 <span class="d-sm-inline d-none">Sign In</span>
                             </a>
@@ -176,7 +197,7 @@
                                 </div>
                             </a>
                         </li>
-{{--
+                        {{--
                         <li class="nav-item dropdown pe-2 d-flex align-items-center">
                             <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton"
                                 data-bs-toggle="dropdown" aria-expanded="false">

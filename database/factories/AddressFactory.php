@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Address;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
 
 class AddressFactory extends Factory
 {
@@ -11,10 +13,11 @@ class AddressFactory extends Factory
      *
      * @return array
      */
+   
     public function definition()
     {
         return [
-            //
+
         ];
     }
 }

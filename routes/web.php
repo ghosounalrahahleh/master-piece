@@ -17,6 +17,9 @@ use App\Http\Controllers\ownerDashboardController;
 use App\Http\Controllers\OwnerOrderController;
 use App\Http\Controllers\OwnerCommentController;
 use App\Http\Controllers\OwnerProductController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SearchController;
+
 ;
 /*
 |--------------------------------------------------------------------------
@@ -54,21 +57,10 @@ Route::group(['middleware' => 'redirect'], function () {
     Route::resource('comments', CommentController::class);
     //Admin Dashboard OWnerInfo
     Route::resource('owners', OwnerInfoController::class);
-    //Admin profile
-    Route::get('/admin/profile', function () {
-        return view('adminDashboard.adminProfile');
-    })->name('admin.profile');
-});
-
-Route::group(['middleware' => 'redirect'], function () {
-    //Owner Dashboard Products Routes
-    Route::resource('ownerProducts', OwnerProductController::class);
-    //Owner Dashboard Orders Routes
-    Route::resource('ownerOrders', OwnerOrderController::class);
-    //Owner Dashboard Comments Routes
-    Route::resource('ownerComments', OwnerCommentController::class);
-    //Main Dashboard Page
-    Route::resource('ownerStatics', OwnerDashboardController::class);
+    //profile
+    Route::resource('profiles', ProfileController::class);
+    //search
+    Route::get('/search', SearchController::class)->name('search');
 });
 Route::get('admin/dashboard', [HomeController::class, 'adminDashboard'])->name('admin.dashboard')->middleware('is_admin');
 Route::get('owner/dashboard', [HomeController::class, 'ownerDashboard'])->name('owner.dashboard')->middleware('is_owner');

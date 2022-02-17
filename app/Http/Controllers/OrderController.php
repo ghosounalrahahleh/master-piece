@@ -26,6 +26,7 @@ class OrderController extends Controller
                     array_push($orders, $order);
                 }
             }
+            // dd($orders[0]);
             return view('adminDashboard.manageOwnerOrders', compact('orders', 'update'));
         } else {
 

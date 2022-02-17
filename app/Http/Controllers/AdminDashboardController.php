@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
+use App\Models\OrderDetail;
+use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 class AdminDashboardController extends Controller
 {
     /**
@@ -12,8 +17,33 @@ class AdminDashboardController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    { 
-        return view('adminDashboard.dashboard');
+    {
+        $users        = User::count();
+        $orderDetails = 0;
+        $sales        = 0;
+        if(auth()->user()->role_id === 2){
+            $products = Product::where('owner_id',auth()->user()->id)->count();
+        }else{
+            $products = Product::count();
+        }
+
+        if(auth()->user()->role_id === 2){
+            $orders = OrderDetail::all();
+            foreach ( $orders as $order) {
+                if ($order->product->owner_id == auth()->user()->id) {
+                    $orderDetails++;
+                    $sales += ($order->quantity * $order->price);
+                }
+            }
+        }else{
+            $orderDetails = OrderDetail::count();
+            $sales= Order::all()->sum('total_price');
+        }
+
+
+        return view('adminDashboard.dashboard', compact('users', 'products', 'orderDetails', 'sales'));
+
+
     }
 
     /**

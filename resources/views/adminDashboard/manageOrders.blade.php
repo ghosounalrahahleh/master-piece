@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid py-4">
     <div class="row">
-            @if ($update === true)
+        @if ($update === true)
         <div class="col-lg-12 col-md-8 col-12 mx-auto my-5">
 
             {{-- Operation Message --}}
@@ -88,56 +88,55 @@
                         <h6 class="text-white text-capitalize ps-3">Orders table</h6>
                     </div>
                 </div>
-                <div class="card-body px-0 pb-2">
-                    <div class="table-responsive p-0">
-                        <table class="table align-items-center justify-content-center mb-0 ">
-                            <thead>
-                                <th class="font-weight-bolder">#</th>
-                                <th class="font-weight-bolder"> User Name</th>
-                                <th class="font-weight-bolder"> Order Status</th>
-                                <th></th>
-                                <th></th>
-                            </thead>
-                            <tbody>
-                                @foreach ($orders as $order)
-                                <tr>
-                                    <td class="ps-4"> {{ $order->id }} </td>
-                                    <td class="ps-4">{{ $order->user->name }} </td>
-                                    @if ($order->status === 'Pending')
-                                    <td class="ps-4 rounded text-warning">{{ $order->status }} <i
-                                            class="fas fa-spinner h6 text-warning ps-2"></i> </td>
-                                    @else
-                                    <td class="ps-4 rounded text-success">{{ $order->status }} <i
-                                            class="fas fa-check h6 text-success ps-2" ></i></td>
-                                    @endif
-                                    <td class=" ps-4 pe-0  text-right">
-                                        <a class="btn btn-link text-dark text-gradient px-3 mb-0"
-                                            href="{{ route('ordersDetails.show',$order->id) }}">
-                                            <i class="fas fa-eye h6"></i>
-                                        </a>
-                                        <a class="btn btn-link text-dark text-gradient px-3 mb-0"
-                                            href="{{ route('orders.edit',$order->id) }}"><i
-                                                class="fas fa-edit h6"></i></a>
-                                    </td>
-                                    <td class="ps-0">
-                                        <form method="POST" action="{{ route('orders.destroy',$order->id) }}">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="btn btn-link text-dark  mb-0" type="submit"><i
-                                                    class="fas fa-trash h6"></i></button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                <!-- Basic Tables start -->
+                <section class="section">
+                    <div class="card">
+                        <div class="card-body">
+                            <table class="table" id="table1">
+                                <thead>
+                                    <th class="font-weight-bolder">#</th>
+                                    <th class="font-weight-bolder"> User Name</th>
+                                    <th class="font-weight-bolder"> Order Status</th>
+                                    <th></th>
+                                    <th></th>
+                                </thead>
+                                <tbody>
+                                    @foreach ($orders as $order)
+                                    <tr>
+                                        <td class="ps-4"> {{ $order->id }} </td>
+                                        <td class="ps-4">{{ $order->user->name }} </td>
+                                        @if ($order->status === 'Pending')
+                                        <td class="ps-4 rounded text-warning">{{ $order->status }} <i
+                                                class="fas fa-spinner h6 text-warning ps-2"></i> </td>
+                                        @else
+                                        <td class="ps-4 rounded text-success">{{ $order->status }} <i
+                                                class="fas fa-check h6 text-success ps-2"></i></td>
+                                        @endif
+                                        <td class=" ps-4 pe-0  text-right">
+                                            <a class="btn btn-link text-dark text-gradient px-3 mb-0"
+                                                href="{{ route('ordersDetails.show',$order->id) }}">
+                                                <i class="fas fa-eye h6"></i>
+                                            </a>
+                                            <a class="btn btn-link text-dark text-gradient px-3 mb-0"
+                                                href="{{ route('orders.edit',$order->id) }}"><i
+                                                    class="fas fa-edit h6"></i></a>
+                                        </td>
+                                        <td class="ps-0">
+                                            <form method="POST" action="{{ route('orders.destroy',$order->id) }}">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-link text-dark  mb-0" type="submit"><i
+                                                        class="fas fa-trash h6"></i></button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                    {{-- pagination part --}}
-                    <div class="d-flex justify-content-center mt-3">
-                        {!! $orders->links() !!}
-                    </div>
-                    {{-- end pagination part --}}
-                </div>
+                </section>
+                <!-- Basic Tables end -->
             </div>
         </div>
     </div>

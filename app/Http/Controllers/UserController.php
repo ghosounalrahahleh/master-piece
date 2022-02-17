@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Address;
+use App\Models\Comment;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Role;
@@ -16,8 +19,9 @@ class UserController extends Controller
      */
     public function index()
     {
+
         $update = false;
-        $users = User::orderBy('id','desc')->paginate(15);
+        $users  = User::orderBy('id', 'desc')->paginate(15);
         $roles  = Role::all();
         return view('adminDashboard.manageUsers', compact('update', 'users', 'roles'));
     }
@@ -67,7 +71,11 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+       $user     = User::find($id);
+       $address  = Address::where('user_id',$id)->get();
+       $comments = Comment::where('user_id',$id)->get();
+       $orders   = Order::where('user_id',$id)->get();
+       return view('adminDashboard.userDetail',compact('user', 'address', 'comments', 'orders' ));
     }
 
     /**
@@ -79,7 +87,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user   = User::find($id);
-        $users  = User::orderBy('id','desc')->paginate(15);
+        $users  = User::orderBy('id', 'desc')->paginate(15);
         $roles  = Role::all();
         $update = true;
         return view('adminDashboard.manageUsers', compact('user', 'users', 'update', 'roles'));
@@ -120,9 +128,9 @@ class UserController extends Controller
     public function destroy($id)
     {
 
-         $user = User::find($id);
-         $user->delete();
-         session()->flash('message', "The user has been deleted successfully");
-         return redirect()->route('users.index');
+        $user = User::find($id);
+        $user->delete();
+        session()->flash('message', "The user has been deleted successfully");
+        return redirect()->route('users.index');
     }
 }

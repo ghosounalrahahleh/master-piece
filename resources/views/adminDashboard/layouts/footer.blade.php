@@ -81,6 +81,20 @@
   </div>
 </div>
 </div>
+{{-- table --}}
+<script src="{{ asset('assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
+<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+
+<script src="{{ asset('assets/vendors/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('assets/vendors/jquery-datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('assets/vendors/jquery-datatables/custom.jquery.dataTables.bootstrap5.min.js') }}"></script>
+<script src="{{ asset('assets/vendors/fontawesome/all.min.js') }}"></script>
+<script>
+// Jquery Datatable
+let jquery_datatable = $("#table1").DataTable()
+</script>
+
+<script src="{{ asset('assets/js/mazer.js') }}"></script>
 {{-- bootstrap --}}
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>

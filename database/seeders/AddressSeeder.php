@@ -13,6 +13,6 @@ class AddressSeeder extends Seeder
      */
     public function run()
     {
-        //
+      
     }
 }

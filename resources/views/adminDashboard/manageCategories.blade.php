@@ -19,11 +19,11 @@
             @if (count($errors) > 0)
             <div class="alert alert-danger alert-dismissible fade show text-white mb-5 " role="alert">
                 <ul>
-                        @foreach ($errors->all() as $error)
-                        <li>
-                            <strong> {{ $error }}</strong>
-                        </li>
-                        @endforeach
+                    @foreach ($errors->all() as $error)
+                    <li>
+                        <strong> {{ $error }}</strong>
+                    </li>
+                    @endforeach
                 </ul>
                 <button type="button" class="btn-close text-white me-3" data-bs-dismiss="alert" aria-label="Close"><i
                         class="fas fa-times "></i></button>
@@ -32,19 +32,19 @@
 
             <div class="card z-index-0 fadeIn3 fadeInBottom">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                    <div  class="purple bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
+                    <div class="purple bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
                         <h5 class="text-white text-capitalize ps-3">Category Form</h5>
 
                     </div>
                 </div>
                 <div class="card-body">
-                    <form role="form" class="text-start" method="POST" action="@if($update === true){{ route('categories.update',$category->id) }} @else {{ route('categories.store') }} @endif"
-                         enctype="multipart/form-data">
+                    <form role="form" class="text-start" method="POST"
+                        action="@if($update === true){{ route('categories.update',$category->id) }} @else {{ route('categories.store') }} @endif"
+                        enctype="multipart/form-data">
                         @csrf
                         <div class="input-group input-group-outline my-3">
                             <label class="form-label"></label>
-                            <input type="text" name="name" class="form-control" placeholder="Category Name"
-                            value="@if($update==true){{ $category->name }}
+                            <input type="text" name="name" class="form-control" placeholder="Category Name" value="@if($update==true){{ $category->name }}
                             @endif">
                         </div>
 
@@ -56,7 +56,8 @@
                         <div class="row justify-content-end">
                             <div class=" col-4 ">
                                 <div class="text-center">
-                                    <button type="submit" class="btn purple bg-gradient-primary w-100 my-4 h6 mb-2">Add to
+                                    <button type="submit" class="btn purple bg-gradient-primary w-100 my-4 h6 mb-2">Add
+                                        to
                                         Categories</button>
                                 </div>
                             </div>
@@ -68,7 +69,8 @@
                                     <form action="{{ route('categories.update',$category->id) }}">
                                         @csrf
                                         @method('PUT')
-                                        <button type="submit" class="btn purple bg-gradient-primary w-100 my-4 h6 mb-2">Update
+                                        <button type="submit"
+                                            class="btn purple bg-gradient-primary w-100 my-4 h6 mb-2">Update
                                             Categoey</button>
                                     </form>
                                 </div>
@@ -84,49 +86,60 @@
         <div class="col-12 ">
             <div class="card my-4">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                    <div  class="purple bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3" >
+                    <div class="purple bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
                         <h6 class="text-white text-capitalize ps-3">Orders table</h6>
                     </div>
                 </div>
-                <div class="card-body px-0 pb-2">
-                    <div class="table-responsive p-0">
-                        <table class="table align-items-center mb-0 ">
-                            <thead>
-                                <th class="font-weight-bolder"> #</th>
-                                <th class="font-weight-bolder"> Category Name</th>
-                                <th class="font-weight-bolder"> Category Image</th>
-                                <th class="font-weight-bolder"> </th>
-                                <th class="font-weight-bolder"> </th>
-                            </thead>
-                            <tbody>
-                                @foreach ($categories as $category)
-                                <tr>
-                                    <td class="ps-4">{{ $category->id }} </td>
-                                    <td class="ps-4">{{ $category->name }} </td>
 
-                                    <td class="ps-4"><img width="50px" height="50px" src="{{ asset($category->image) }}"
-                                            alt="user image"></td>
-                                    <td class="ps-4 pe-0  text-right">
-                                        <a class="btn btn-link text-dark text-gradient px-3 mb-0"
-                                            href="{{ route('categories.edit',$category->id) }}">
-                                            <i class="fas fa-edit h6"></i>
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <form method="POST" action="{{ route('categories.destroy',$category->id) }}">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="btn btn-link text-dark px-3 mb-0" type="submit">
-                                                <i class="fas fa-trash h6"></i>
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                <!-- Basic Tables start -->
+                <section class="section">
+                    <div class="card">
+                        <div class="card-body">
+                            <table class="table" id="table1">
+                                <thead>
+                                    <th class="font-weight-bolder"> #</th>
+                                    <th class="font-weight-bolder"> Category Name</th>
+                                    <th class="font-weight-bolder"> Category Image</th>
+                                    <th class="font-weight-bolder"> </th>
+                                    <th class="font-weight-bolder"> </th>
+                                </thead>
+                                <tbody>
+                                    @foreach ($categories as $category)
+                                    <tr>
+                                        <td class="ps-4">{{ $category->id }} </td>
+                                        <td class="ps-4">{{ $category->name }} </td>
+
+                                        <td class="ps-4"><img width="50px" height="50px"
+                                                src="{{ asset($category->image) }}" alt="user image"></td>
+                                        <td class="ps-4 pe-0  text-right">
+                                            <a class="btn btn-link text-dark text-gradient px-3 mb-0"
+                                                href="{{ route('categories.edit',$category->id) }}">
+                                                <i class="fas fa-edit h6"></i>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <form method="POST"
+                                                action="{{ route('categories.destroy',$category->id) }}">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-link text-dark px-3 mb-0" type="submit">
+                                                    <i class="fas fa-trash h6"></i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+
+
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                </div>
+
+                </section>
+                <!-- Basic Tables end -->
+
             </div>
         </div>
     </div>

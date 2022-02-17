@@ -3,29 +3,26 @@
 @section('content')
 <div class="container-fluid py-4">
     <div class="row justify-content-center">
+
         {{-- Form Start --}}
         <div class="col-lg-12 col-md-8 col-12 mx-auto my-5">
             {{-- Operation Message --}}
             @if (session('message'))
-
             <div class="alert alert-success alert-dismissible fade show text-white bg-success mb-5 " role="alert">
                 <strong> {{ session('message') }}</strong>
                 <button type="button" class="btn-close text-white me-3" data-bs-dismiss="alert" aria-label="Close"><i
                         class="fas fa-times "></i></button>
             </div>
             @endif
-
             {{-- Errors Message --}}
             @if (count($errors) > 0)
             <div class="alert alert-danger alert-dismissible fade show text-white mb-5 " role="alert">
                 <ul>
-
-                        @foreach ($errors->all() as $error)
-                        <li>
-                            <strong> {{ $error }}</strong>
-                        </li>
-                        @endforeach
-
+                    @foreach ($errors->all() as $error)
+                    <li>
+                        <strong> {{ $error }}</strong>
+                    </li>
+                    @endforeach
                 </ul>
                 <button type="button" class="btn-close text-white me-3" data-bs-dismiss="alert" aria-label="Close"><i
                         class="fas fa-times "></i></button>
@@ -114,9 +111,9 @@
                         <h6 class="text-white text-capitalize ps-3">Users table</h6>
                     </div>
                 </div>
-                <div class="card-body px-0 pb-2">
-                    <div class="table-responsive p-0">
-                        <table class="table align-items-center mb-0 ">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table" id="table1">
                             <thead>
                                 <tr>
                                     <th class=" font-weight-bolder"> #</th>
@@ -125,7 +122,7 @@
                                     <th class=" font-weight-bolder"> User Role</th>
                                     <th class=" font-weight-bolder"> User photo</th>
                                     <th class=" font-weight-bolder"> </th>
-                                    <th class=" font-weight-bolder"> </th>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -137,14 +134,18 @@
                                     <td class="ps-4"> {{ $user->role->role }}</td>
                                     <td class="ps-4"><img width="50px" height="50px" src="{{ asset($user->image) }}"
                                             alt="user image"></td>
-                                    <td class="ps-4 pe-0  text-right ">
+                                    <td class="ps-4 pe-0 d-flex text-right ">
+                                        {{-- display User Detailes --}}
+                                        <a class="btn btn-link text-dark text-gradient px-3 mb-0"
+                                            href="{{ route('users.show',$user->id) }}">
+                                            <i class="fas fa-eye h6"></i>
+                                        </a>
+                                        {{-- edit user detaile --}}
                                         <a class="btn btn-link text-dark text-gradient px-3 mb-0"
                                             href="{{ route('users.edit',$user->id) }}">
                                             <i class="fas fa-edit h6"></i>
                                         </a>
-
-                                    </td>
-                                    <td>
+                                        {{-- delete user --}}
                                         <form method="POST" action="{{ route('users.destroy',$user->id) }}">
                                             @csrf
                                             @method('DELETE')
@@ -158,11 +159,6 @@
                             </tbody>
                         </table>
                     </div>
-                     {{-- pagination part --}}
-                     <div class="d-flex justify-content-center mt-3">
-                        {!! $users->links() !!}
-                    </div>
-                    {{-- end pagination part --}}
                 </div>
             </div>
         </div>

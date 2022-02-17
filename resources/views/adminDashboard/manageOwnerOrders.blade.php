@@ -86,55 +86,64 @@
                         <h6 class="text-white text-capitalize ps-3">Orders table</h6>
                     </div>
                 </div>
-                <div class="card-body px-0 pb-2">
-                    <div class="table-responsive p-0">
-                        <table class="table align-items-center justify-content-center mb-0 ">
-                            <thead>
 
-                                <th class=" font-weight-bolder"> Order Detail ID</th>
-                                <th class=" font-weight-bolder"> Order ID</th>
-                                <th class=" font-weight-bolder"> Product Name</th>
-                                <th class=" font-weight-bolder"> Product Image</th>
-                                <th class=" font-weight-bolder"> Size</th>
-                                <th class=" font-weight-bolder"> Color</th>
-                                <th class=" font-weight-bolder"> Quantity</th>
-                                <th class=" font-weight-bolder"> Status</th>
-                                <th></th>
+                <!-- Basic Tables start -->
+                <section class="section">
 
-                            </thead>
-                            <tbody>
-                                @foreach ($orders as $order)
-                                <tr>
-                                    <td class="ps-4"> {{ $order->id }} </td>
-                                    <td class="ps-4">{{ $order->order_id }} </td>
-                                    <td class="ps-4 rounded ">{{ $order->product->name }} </td>
-                                    <td class="ps-4 rounded "><img width="100px" src="{{ asset( $order->product->main_image) }}"
-                                            alt="{{ $order->product->name }} "></td>
-                                    <td class="ps-4 rounded ">{{ $order->size }} </td>
-                                    <td class="ps-4 rounded ">{{ $order->color }} </td>
-                                    <td class="ps-4 rounded ">{{ $order->quantity}} </td>
-                                    @if ($order->status === 'Pending')
-                                    <td class="ps-4 rounded text-warning">{{ $order->status }} <i
-                                            class="fas fa-spinner h6 text-warning ps-2"></i> </td>
-                                    @else
-                                    <td class="ps-4 rounded text-success">{{ $order->status }} <i
-                                            class="fas fa-check h6 text-success ps-2" ></i></td>
-                                    @endif
-                                    <td class="ps-4 pe-0  text-right">
-                                        <a class="btn btn-link text-dark text-gradient px-3 mb-0"
-                                            href="{{ route('orders.edit',$order->id) }}">
-                                            <i class="fas fa-edit h6"></i>
-                                        </a>
+                    <div class="card">
+                        <div class="card-body">
+                            @if ($orders===[])
+                            <h2 class="text-center">There is no orders yet!</h2>
+                            @else
+                            <table class="table" id="table1">
+                                <thead>
+                                    <th class=" font-weight-bolder"> Order Detail ID</th>
+                                    <th class=" font-weight-bolder"> Order ID</th>
+                                    <th class=" font-weight-bolder"> Product Name</th>
+                                    <th class=" font-weight-bolder"> Product Image</th>
+                                    <th class=" font-weight-bolder"> Size</th>
+                                    <th class=" font-weight-bolder"> Color</th>
+                                    <th class=" font-weight-bolder"> Quantity</th>
+                                    <th class=" font-weight-bolder"> Status</th>
+                                    <th></th>
+                                </thead>
+                                <tbody>
+                                    @foreach ($orders as $order)
+                                    <tr>
+                                        <td class="ps-4"> {{ $order->id }} </td>
+                                        <td class="ps-4">{{ $order->order_id }} </td>
+                                        <td class="ps-4 rounded ">{{ $order->product->name }} </td>
+                                        <td class="ps-4 rounded "><img width="100px"
+                                                src="{{ asset( $order->product->main_image) }}"
+                                                alt="{{ $order->product->name }} "></td>
+                                        <td class="ps-4 rounded ">{{ $order->size }} </td>
+                                        <td class="ps-4 rounded ">{{ $order->color }} </td>
+                                        <td class="ps-4 rounded ">{{ $order->quantity}} </td>
+                                        @if ($order->status === 'Pending')
+                                        <td class="ps-4 rounded text-warning">{{ $order->status }} <i
+                                                class="fas fa-spinner h6 text-warning ps-2"></i> </td>
+                                        @else
+                                        <td class="ps-4 rounded text-success">{{ $order->status }} <i
+                                                class="fas fa-check h6 text-success ps-2"></i></td>
+                                        @endif
+                                        <td class="ps-4 pe-0  text-right">
+                                            <a class="btn btn-link text-dark text-gradient px-3 mb-0"
+                                                href="{{ route('orders.edit',$order->id) }}">
+                                                <i class="fas fa-edit h6"></i>
+                                            </a>
 
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                            @endif
+
+                        </div>
                     </div>
 
-
-                </div>
+                </section>
+                <!-- Basic Tables end -->
             </div>
         </div>
     </div>

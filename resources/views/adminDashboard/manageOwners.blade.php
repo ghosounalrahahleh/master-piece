@@ -20,11 +20,11 @@
             <div class="alert alert-danger alert-dismissible fade show text-white mb-5 " role="alert">
                 <ul>
 
-                        @foreach ($errors->all() as $error)
-                        <li>
-                            <strong> {{ $error }}</strong>
-                        </li>
-                        @endforeach
+                    @foreach ($errors->all() as $error)
+                    <li>
+                        <strong> {{ $error }}</strong>
+                    </li>
+                    @endforeach
 
                 </ul>
                 <button type="button" class="btn-close text-white me-3" data-bs-dismiss="alert" aria-label="Close"><i
@@ -46,14 +46,13 @@
                         <div class=" input-group input-group-outline my-3">
                             <label class="form-label"></label>
                             <input type="text" name="company_name" class="form-control" placeholder="Company Name"
-                             value="@if($update==true){{ $owner->company_name }}
+                                value="@if($update==true){{ $owner->company_name }}
                             @endif">
                         </div>
 
                         <div class="input-group input-group-outline my-3">
                             <label class="form-label"></label>
-                            <input type="email" class="form-control" name="email" placeholder="Company Email"
-                            value="@if($update==true){{ $owner->email }}
+                            <input type="email" class="form-control" name="email" placeholder="Company Email" value="@if($update==true){{ $owner->email }}
                             @endif">
                         </div>
 
@@ -63,15 +62,13 @@
 
                         <div class="input-group input-group-outline mb-3">
                             <label class="form-label"></label>
-                            <input type="text" class="form-control" name="phone" placeholder="Phone"
-                            value="@if($update==true){{ $owner->phone }}
+                            <input type="text" class="form-control" name="phone" placeholder="Phone" value="@if($update==true){{ $owner->phone }}
                             @endif">
                         </div>
 
                         <div class="input-group input-group-outline mb-3">
                             <label class="form-label"></label>
-                            <input type="text" class="form-control" name="address" placeholder="Address"
-                            value="@if($update==true){{ $owner->address }}
+                            <input type="text" class="form-control" name="address" placeholder="Address" value="@if($update==true){{ $owner->address }}
                             @endif">
                         </div>
 
@@ -79,7 +76,8 @@
                         <div class="row justify-content-end">
                             <div class=" col-4 ">
                                 <div class="text-center">
-                                    <button type="submit" class="btn purple bg-gradient-primary w-100 my-4 h6 mb-2">Add to
+                                    <button type="submit" class="btn purple bg-gradient-primary w-100 my-4 h6 mb-2">Add
+                                        to
                                         Owners</button>
                                 </div>
                             </div>
@@ -91,7 +89,8 @@
                                     <form action="{{ route('owners.update',$owner->id) }}">
                                         @csrf
                                         @method('PUT')
-                                        <button type="submit" class="btn purple bg-gradient-primary w-100 my-4 h6 mb-2">Update
+                                        <button type="submit"
+                                            class="btn purple bg-gradient-primary w-100 my-4 h6 mb-2">Update
                                             Owners info</button>
                                     </form>
                                 </div>
@@ -112,53 +111,56 @@
                         <h6 class="text-white text-capitalize ps-3">Owners Information table</h6>
                     </div>
                 </div>
-                <div class="card-body px-0 pb-2">
-                    <div class="table-responsive p-0">
-                        <table class="table align-items-center mb-0 ">
-                            <thead>
-                                <tr>
-                                    <th class=" font-weight-bolder">Company Logo</th>
-                                    <th class=" font-weight-bolder"> Company Name</th>
-                                    <th class=" font-weight-bolder"> Company Email</th>
-                                    <th class=" font-weight-bolder"> Company Phone</th>
-                                    <th class=" font-weight-bolder"> Company Address</th>
-                                    <th></th>
-                                    <th></th>
+                <!-- Basic Tables start -->
+                <section class="section">
+                    <div class="card">
+                        <div class="card-body">
+                            <table class="table" id="table1">
+                                <thead>
+                                    <tr>
+                                        <th class=" font-weight-bolder">Company Logo</th>
+                                        <th class=" font-weight-bolder"> Company Name</th>
+                                        <th class=" font-weight-bolder"> Company Email</th>
+                                        <th class=" font-weight-bolder"> Company Phone</th>
+                                        <th class=" font-weight-bolder"> Company Address</th>
+                                        <th></th>
+                                        <th></th>
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($ownersInfo as $owner)
-                                <tr>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($ownersInfo as $owner)
+                                    <tr>
 
-                                    <td class="ps-4"><img width="50px" height="50px" src="{{ asset($owner->logo) }}"
-                                            alt="user image"></td>
+                                        <td class="ps-4"><img width="50px" height="50px" src="{{ asset($owner->logo) }}"
+                                                alt="user image"></td>
 
-                                    <td>{{$owner->company_name}}</td>
-                                    <td>{{$owner->email }}</td>
-                                    <td> {{$owner->phone }}</td>
-                                    <td>{{$owner->address }}</td>
-                                    <td class="ps-4 pe-0  text-right">
-                                        <a class="btn btn-link text-dark text-gradient px-3 mb-0"
-                                            href="{{ route('owners.edit',$owner->id) }}"><i
-                                                class="fas fa-edit h6"></i></a>
+                                        <td>{{$owner->company_name}}</td>
+                                        <td>{{$owner->email }}</td>
+                                        <td> {{$owner->phone }}</td>
+                                        <td>{{$owner->address }}</td>
+                                        <td class="ps-4 pe-0  text-right">
+                                            <a class="btn btn-link text-dark text-gradient px-3 mb-0"
+                                                href="{{ route('owners.edit',$owner->id) }}"><i
+                                                    class="fas fa-edit h6"></i></a>
 
-                                    </td>
-                                    <td>
-                                        <form method="POST" action="{{ route('owners.destroy',$owner->id) }}">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="btn btn-link text-dark px-3 mb-0" type="submit"><i
-                                                    class="fas fa-trash h6"></i></button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                @endforeach
-
-                            </tbody>
-                        </table>
+                                        </td>
+                                        <td>
+                                            <form method="POST" action="{{ route('owners.destroy',$owner->id) }}">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-link text-dark px-3 mb-0" type="submit"><i
+                                                        class="fas fa-trash h6"></i></button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                </div>
+                </section>
+                <!-- Basic Tables end -->
             </div>
         </div>
     </div>
