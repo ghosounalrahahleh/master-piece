@@ -23,8 +23,7 @@
     <link rel="stylesheet" href=" {{ asset('assets2/css/flaticon.css') }}">
     <link rel="stylesheet" href=" {{ asset('assets2/css/icomoon.css') }}">
     <link rel="stylesheet" href=" {{ asset('assets2/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset(" assets2/css/custom.css") }}">
-    <link rel="stylesheet" href=" {{ asset('userProfile') }}">
+    <link rel="stylesheet" href="{{ asset('assets2/custom.css') }}">
 
     {{-- logo font --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,20 +33,29 @@
     {{-- font icons --}}
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css%22%3E">
+    {{-- bootstrap --}}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
+    {{-- slider --}}
+
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco-navbar-light" id="ftco-navbar">
+    <nav class="navbar navbar-expand-lg navbar-dark  ftco-navbar-light" id="ftco-navbar">
         <div class="container d-flex align-items-center justify-content-between ">
 
-            <div  class=" col-md-3  col-sm-3 d-flex align-items-center py-4">
+            <div class=" col-md-3  col-sm-3 d-flex align-items-center py-4">
                 <a class="navbar-brand" href="/" style="font-family: 'Oldenburg', cursive;"><span
                         style="font-size:38px">A</span><span>fdalcomp</span></a>
             </div>
             <div class="col-md-6 col-sm-3 d-lg-flex d-md-flex d-sm-none d-none align-items-center py-4">
                 {{-- Search part --}}
-                <form action="" method="get" class="searchform order-lg-last w-100" >
+                <form action="" method="get" class="searchform order-lg-last w-100">
                     {{-- @csrf --}}
                     <div class="form-group d-flex">
                         <input type="text" class="form-control pl-3" placeholder="Search" name="search" required>
@@ -58,10 +66,10 @@
                 {{-- End Searh part --}}
             </div>
 
-                <button class="navbar-toggler col-2" type="button" data-toggle="collapse" data-target="#ftco-nav"
-                    aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="oi oi-menu"></span>
-                </button>
+            <button class="navbar-toggler col-2" type="button" data-toggle="collapse" data-target="#ftco-nav"
+                aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span>
+            </button>
 
 
             <div class="collapse navbar-collapse " id="ftco-nav">

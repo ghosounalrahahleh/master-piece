@@ -13,14 +13,13 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\OwnerInfoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\LandingController;
 use App\Http\Controllers\ownerDashboardController;
 use App\Http\Controllers\OwnerOrderController;
 use App\Http\Controllers\OwnerCommentController;
 use App\Http\Controllers\OwnerProductController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\SearchController;
-
-;
+use App\Http\Controllers\SearchController;;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,9 +34,8 @@ use App\Http\Controllers\SearchController;
 Route::get('/', function () {
     return view('home');
 });
-Route::get('/land', function () {
-    return view('publicSite.landing');
-});
+//public site routes
+Route::get('/land', [LandingController::class, 'index'])->name('Land');
 
 Route::group(['middleware' => 'redirect'], function () {
     //Main Dashboard Page
@@ -67,6 +65,8 @@ Route::group(['middleware' => 'redirect'], function () {
 });
 Route::get('admin/dashboard', [HomeController::class, 'adminDashboard'])->name('admin.dashboard')->middleware('is_admin');
 Route::get('owner/dashboard', [HomeController::class, 'ownerDashboard'])->name('owner.dashboard')->middleware('is_owner');
+
+
 
 //Authentication Route
 Auth::routes();

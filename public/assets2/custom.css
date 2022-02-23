@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+:root {
+    --pink: #F6E7FF;
+    --purple: #5A189A;
+}
+
+.grid {
+
+    min-height: 300px;
+    grid-template-areas:
+        'categories categories categories';
+}
+
+.section1 {
+    grid-area: categories;
+    height: 400px;
+    background: linear-gradient(180deg, var(--pink) 50%, #fff 50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section1__heading {
+    font-family: 'Lobster',
+        cursive;
+    margin-top: 30px;
+}
+
+.section1__slider {
+    height: 50%;
+    width: 90%;
+    margin-top: 30px;
+/* background-color:var(--purple); */
+}
+
+.MultiCarousel {
+    float: left;
+    overflow: hidden;
+    padding: 15px;
+    width: 100%;
+    position: relative;
+}
+
+.MultiCarousel .MultiCarousel-inner {
+    transition: 1s ease all;
+    float: left;
+}
+
+.MultiCarousel .MultiCarousel-inner .item {
+    float: left;
+}
+
+.MultiCarousel .MultiCarousel-inner .item>div {
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+    background: transparent;
+    color: var(--purple);
+}
+
+.MultiCarousel .leftLst,
+.MultiCarousel .rightLst {
+    position: absolute;
+    border-radius: 50%;
+    top: calc(50% - 20px);
+}
+
+.MultiCarousel .leftLst {
+    left: 0;
+}
+
+.MultiCarousel .rightLst {
+    right: 0;
+}
+
+.MultiCarousel .leftLst.over,
+.MultiCarousel .rightLst.over {
+    pointer-events: none;
+    background: #ccc;
+}
+.item__img{
+    border-radius: 50%;
+    border: 3px solid var(--purple);
+}

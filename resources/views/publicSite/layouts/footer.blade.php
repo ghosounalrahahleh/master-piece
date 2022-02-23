@@ -115,6 +115,7 @@
 <script src=" {{ asset('assets2/js/aos.js') }}"></script>
 <script src=" {{ asset('assets2/js/jquery.animateNumber.min.js') }}"></script>
 <script src=" {{ asset('assets2/js/scrollax.min.js') }}"></script>
+<script src=" {{ asset('assets2/js/slider.js') }}"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 <script src=" {{ asset('assets2/js/google-map.js') }}"></script>
 <script src=" {{ asset('assets2/js/main.js') }}"></script>
