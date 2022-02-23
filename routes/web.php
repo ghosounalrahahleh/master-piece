@@ -35,6 +35,9 @@ use App\Http\Controllers\SearchController;
 Route::get('/', function () {
     return view('home');
 });
+Route::get('/land', function () {
+    return view('publicSite.landing');
+});
 
 Route::group(['middleware' => 'redirect'], function () {
     //Main Dashboard Page
