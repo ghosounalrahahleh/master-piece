@@ -31,11 +31,11 @@ use App\Http\Controllers\SearchController;;
 |
 */
 
-Route::get('/', function () {
+Route::get('/land', function () {
     return view('home');
 });
 //public site routes
-Route::get('/land', [LandingController::class, 'index'])->name('Land');
+Route::get('/', [LandingController::class, 'index'])->name('Land');
 
 Route::group(['middleware' => 'redirect'], function () {
     //Main Dashboard Page
