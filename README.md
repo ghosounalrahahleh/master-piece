@@ -24,7 +24,8 @@
 ```
 
 ## References
-1. <a href=" https://laravel.com/docs/7.x" > Laravel Documentation</a>
+
+1. <a href=" https://laravel.com/docs/7.x"> Laravel Documentation</a>
 2. Udemy Laravel online course.
 3. Google 
 
