@@ -3,8 +3,31 @@
 :root {
     --pink: #F6E7FF;
     --purple: #5A189A;
+    --white: #fff;
+    --Lobster: 'Lobster', cursive;
+}
+/* forms style */
+.btn-purple {
+    background-color: var(--purple) !important;
+    color: var(--white);
+    font-weight:  bold;
+    transform:  translateY(0);
+    transition: all .3s ;
+}
+.text-purple{
+    color: var(--purple) !important;
+    font-weight: bold;
 }
 
+.btn-purple:hover{
+    transform: translateY(-7px);
+    background-color: var(--pink) !important;
+    color: var(--purple);}
+.form-title{
+    font-family: var(--Lobster);
+}
+
+/* home page style */
 .grid {
 
     min-height: 300px;
@@ -101,5 +124,5 @@
     width: 35%;
 }
 @media(max-width:767px){
-    
+
 }

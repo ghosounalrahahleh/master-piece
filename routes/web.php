@@ -31,11 +31,17 @@ use App\Http\Controllers\SearchController;;
 |
 */
 
-Route::get('/land', function () {
-    return view('home');
-});
+// Route::get('/land', function () {
+//     return view('home');
+// });
 //public site routes
-Route::get('/', [LandingController::class, 'index'])->name('Land');
+Route::get('/', [ LandingController::class, 'index'])->name('home');
+Route::get('/joinUs', function () {
+    return view('publicSite.joinUs');
+});
+Route::get('/About', function () {
+    return view('publicSite.about');
+});
 
 Route::group(['middleware' => 'redirect'], function () {
     //Main Dashboard Page
@@ -72,4 +78,4 @@ Route::get('owner/dashboard', [HomeController::class, 'ownerDashboard'])->name('
 Auth::routes();
 
 //Admin Route
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

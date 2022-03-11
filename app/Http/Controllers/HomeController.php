@@ -40,7 +40,7 @@ class HomeController extends Controller
         return view('ownerDashboard.dashboard');
     }
 
-  
+
 
 
 }

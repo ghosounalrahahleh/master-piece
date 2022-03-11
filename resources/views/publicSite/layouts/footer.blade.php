@@ -38,9 +38,9 @@
                     <h2 class="ftco-heading-2">About</h2>
                     <ul class="list-unstyled">
                         <li><a href="/"><span class="ion-ios-arrow-round-forward mr-2"></span>About us</a></li>
-                        <li><a href="{{ 'about' }}"><span class="ion-ios-arrow-round-forward mr-2"></span>Our Team</a>
+                        <li><a href="/About"><span class="ion-ios-arrow-round-forward mr-2"></span>Our Team</a>
                         </li>
-                        <li><a href="{{ 'services' }}"><span class="ion-ios-arrow-round-forward mr-2"></span>Join Us</a>
+                        <li><a href=""><span class="ion-ios-arrow-round-forward mr-2"></span>Join Us</a>
                         </li>
                         <li><a href=""><span class="ion-ios-arrow-round-forward mr-2"></span>Delivery</a></li>
                         <li><a href=""><span class="ion-ios-arrow-round-forward mr-2"></span>Take photos</a></li>

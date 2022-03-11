@@ -23,7 +23,6 @@
     <link rel="stylesheet" href=" {{ asset('assets2/css/flaticon.css') }}">
     <link rel="stylesheet" href=" {{ asset('assets2/css/icomoon.css') }}">
     <link rel="stylesheet" href=" {{ asset('assets2/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets2/custom.css') }}">
 
     {{-- logo font --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,8 +39,9 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
     {{-- slider --}}
-
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="{{ asset('assets2/css/custom.css') }}">
+
 </head>
 
 <body>
@@ -70,8 +70,6 @@
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"></span>
             </button>
-
-
             <div class="collapse navbar-collapse " id="ftco-nav">
                 {{-- Search part --}}
                 <form action="" method="get" class="searchform order-lg-last d-lg-none d-md-none d-sm-block" style=" ">
@@ -88,27 +86,19 @@
 
                     <li class="nav-item  submenu dropdown">
 
-                        {{-- <a href="{{ route('allCategories' )}}" class="nav-link ">Companies</a> --}}
-                        {{-- @isset($categories)
-
+                        <a href="{{ route('categories.index' )}}" class="nav-link ">Categories</a>
+                        {{-- @isset($categories) --}}
                         <ul class="dropdown-menu">
-
-
-
                             @foreach ($categories as $category )
-                            <li class="nav-item">j
-                                {{-- <a class="nav-link text-dark justify-content-center px-2"
-                                    href="{{ route('category',$category->id )}}">{{ $category->name }}</a> --}}
-                                {{-- </li>
-                            @endforeach --}}
-
-                            {{--
+                            <li class="nav-item">
+                                <a class="nav-link text-dark justify-content-center px-2"
+                                    href="{{ route('categories.show',$category->id )}}">{{ $category->name }}</a>
+                                 </li>
+                            @endforeach
                         </ul>
-                        @endisset --}}
-                        {{--
-                    </li> --}}
-                    {{-- <li class="nav-item"><a href="{{ route('services' )}}" class="nav-link">Services</a></li> --}}
-                    {{-- <li class="nav-item"><a href="{{  route('about' ) }}" class="nav-link">About</a></li> --}}
+                        {{-- @endisset --}}
+                    </li>
+                    
                     @guest
                     @if (Route::has('login'))
 
