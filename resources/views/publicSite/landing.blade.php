@@ -1,5 +1,5 @@
 @extends('publicSite.layouts.master')
-
+@section('title','Home')
 @section('content')
 <main class="grid">
     {{-- section 1 start --}}

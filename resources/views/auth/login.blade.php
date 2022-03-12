@@ -1,5 +1,5 @@
 @extends('publicSite.layouts.master')
-
+@section('title','Login')
 @section('content')
 <div class="container my-5">
     <div class="row justify-content-center">

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Afdalcomp-@yield('title','Afdalcomp')</title>
+    <title>Crafty-@yield('title','')</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -42,6 +42,7 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link rel="stylesheet" href="{{ asset('assets2/css/custom.css') }}">
 
+    
 </head>
 
 <body>
@@ -49,11 +50,12 @@
     <nav class="navbar navbar-expand-lg navbar-dark  ftco-navbar-light" id="ftco-navbar">
         <div class="container d-flex align-items-center justify-content-between ">
 
-            <div class=" col-md-3  col-sm-3 d-flex align-items-center py-4">
+            <div class=" col-md-2 col-sm-3 d-flex align-items-center py-2">
                 <a class="navbar-brand" href="/" style="font-family: 'Oldenburg', cursive;"><span
-                        style="font-size:38px">A</span><span>fdalcomp</span></a>
+                        style="font-size:38px">C</span><span>rafty</span></a>
             </div>
-            <div class="col-md-6 col-sm-3 d-lg-flex d-md-flex d-sm-none d-none align-items-center py-4">
+
+            <div class="col-md-6 col-sm-3 d-lg-flex d-md-flex d-sm-none d-none align-items-center py-2">
                 {{-- Search part --}}
                 <form action="" method="get" class="searchform order-lg-last w-100">
                     {{-- @csrf --}}
@@ -70,7 +72,9 @@
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"></span>
             </button>
-            <div class="collapse navbar-collapse " id="ftco-nav">
+
+            <div class="collapse navbar-collapse col-md-4"  id="ftco-nav">
+
                 {{-- Search part --}}
                 <form action="" method="get" class="searchform order-lg-last d-lg-none d-md-none d-sm-block" style=" ">
                     {{-- @csrf --}}
@@ -81,36 +85,35 @@
                     </div>
                 </form>
                 {{-- End Searh part --}}
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active"><a href="/" class="nav-link pl-0">Home</a></li>
 
+                <ul class="navbar-nav mr-auto d-md-flex w-100  d-lg-flex justify-content-around public-menu">
+                    <li class="nav-item text-center"><a href="/Crafty" class="nav-link {{ request()->is('Crafty') ? 'active' : ''}}">Home</a></li>
                     <li class="nav-item  submenu dropdown">
-
-                        <a href="{{ route('categories.index' )}}" class="nav-link ">Categories</a>
-                        {{-- @isset($categories) --}}
+                        <a href="{{ route('allCategories' )}}"
+                            class="nav-link {{ request()->is('AllCategories') ? 'active' : ''}}">Categories</a>
+                        @isset($categories)
                         <ul class="dropdown-menu">
                             @foreach ($categories as $category )
                             <li class="nav-item">
                                 <a class="nav-link text-dark justify-content-center px-2"
                                     href="{{ route('categories.show',$category->id )}}">{{ $category->name }}</a>
-                                 </li>
+                            </li>
                             @endforeach
                         </ul>
-                        {{-- @endisset --}}
+                        @endisset
                     </li>
-                    
                     @guest
                     @if (Route::has('login'))
 
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        <a class="nav-link {{ request()->is('login') ? 'active' : ''}}" href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li>
                     @endif
 
                     @if (Route::has('register'))
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        <a class="nav-link {{ request()->is('register') ? 'active' : ''}}" href="{{ route('register') }}">{{ __('Register') }}</a>
                     </li>
                     @endif
                     @else

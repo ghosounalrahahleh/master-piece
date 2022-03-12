@@ -35,7 +35,9 @@ use App\Http\Controllers\SearchController;;
 //     return view('home');
 // });
 //public site routes
-Route::get('/', [ LandingController::class, 'index'])->name('home');
+Route::get('/Crafty', [ LandingController::class, 'index'])->name('home');
+Route::get('/AllCategories', [ CategoryController::class, 'categories'])->name('allCategories');
+Route::get('/product/{id}', [ProductController::class, 'productShow'])->name('singleProduct');
 Route::get('/joinUs', function () {
     return view('publicSite.joinUs');
 });

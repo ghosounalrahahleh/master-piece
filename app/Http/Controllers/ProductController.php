@@ -7,7 +7,7 @@ use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Category;
 use App\Models\Auth;
-
+use App\Models\Comment;
 
 class ProductController extends Controller
 {
@@ -95,8 +95,16 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
+
+
+    }
+    public function productShow($id)
+    {
+        $product    = Product::find($id);
+        $comments   = Comment::where('product_id', $id)->paginate(5);
+        return view('publicSite.singleProduct', compact('product', 'comments'));
     }
 
     /**

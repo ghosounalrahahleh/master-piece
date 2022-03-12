@@ -40,7 +40,7 @@
                         <li><a href="/"><span class="ion-ios-arrow-round-forward mr-2"></span>About us</a></li>
                         <li><a href="/About"><span class="ion-ios-arrow-round-forward mr-2"></span>Our Team</a>
                         </li>
-                        <li><a href=""><span class="ion-ios-arrow-round-forward mr-2"></span>Join Us</a>
+                        <li><a href="/joinUs"><span class="ion-ios-arrow-round-forward mr-2"></span>Join Us</a>
                         </li>
                         <li><a href=""><span class="ion-ios-arrow-round-forward mr-2"></span>Delivery</a></li>
                         <li><a href=""><span class="ion-ios-arrow-round-forward mr-2"></span>Take photos</a></li>
@@ -103,6 +103,7 @@
 </script>
 <script src="https://kit.fontawesome.com/9bef045b1e.js" crossorigin="anonymous"></script>
 
+<script src=" {{ asset('assets2/js/custom.js') }}"></script>
 <script src=" {{ asset('assets2/js/jquery.min.js') }}"></script>
 <script src=" {{ asset('assets2/js/jquery-migrate-3.0.1.min.js') }}"></script>
 <script src=" {{ asset('assets2/js/popper.min.js') }}"></script>

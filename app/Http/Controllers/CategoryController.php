@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
+use App\Models\Product;
 
 class CategoryController extends Controller
 {
@@ -63,9 +64,12 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show($id)
     {
-        //
+        $categories = Category::all();
+        $products   = Product::where('category_id',$id)->paginate(20);
+        return view('publicSite.singleCategory', compact('categories', 'products'));
+
     }
 
     /**
@@ -116,5 +120,13 @@ class CategoryController extends Controller
         $category->delete();
         session()->flash('message', "The category has been deleted successfully");
         return redirect()->route('categories.index');
+    }
+
+    // public site
+    public function categories()
+    {
+        $categories = Category::all();
+        $products   = Product::paginate(20);
+        return view('publicSite.categories', compact('categories', 'products'));
     }
 }
