@@ -16,7 +16,12 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('role_id')->defult(2);
+            $table->foreignId('role_id')
+                ->defult(2)
+                ->unsigned()
+                ->references('id')
+                ->on('roles')
+                ->onDelete('cascade');
             $table->string('email')->unique();
             $table->text('image')->default('images/defult.png');
             $table->timestamp('email_verified_at')->nullable();
