@@ -66,12 +66,13 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $categories = Category::all();
-        $products   = Product::where('category_id',$id)->paginate(20);
-        return view('publicSite.singleCategory', compact('categories', 'products'));
-
     }
-
+    public function categoryShow($id)
+    {
+        $categories = Category::all();
+        $products   = Product::where('category_id', $id)->paginate(20);
+        return view('publicSite.singleCategory', compact('categories', 'products'));
+    }
     /**
      * Show the form for editing the specified resource.
      *

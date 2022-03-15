@@ -34,7 +34,7 @@
                                 @foreach ($categories as $category)
                                 <li class="category-title bg-transparent list-group-item">
                                     <a class="text-decoration-none h6 text-capitalize text-purple"
-                                        href="{{ route('categories.show', $category->id ) }}">
+                                        href="{{ route('singleCategory', $category->id ) }}">
                                         {{ $category->name }}</a>
                                 </li>
                                 @endforeach
@@ -53,25 +53,25 @@
                         <a class="" href="{{ route("singleProduct",$product->id) }}"><img height="220px"
                                 src="{{asset($product->main_image)}}" class="card-img-top" alt="Company-logo"></a>
                         <div class="card-body">
-                            <a class="text-decoration-none" href="{{ route("singleProduct",$product->id) }}"><h5
-                                    class="">{{ $product->name }}</h5></a>
-                            <a class="text-decoration-none text-purple fw-light " href="{{ route
-                            ("categories.show",$product->category_id) }}"><p class="mb-1 text-truncate">{{
-                                    $product->category->name }}</p></a>
-                            <h5 class="mb-3">
-                                <span
-                                    class="{{ $product->is_onSale == 1 ? 'text-decoration-line-through fw-light' : ''  }}">
-                                    {{$product->price}} {{ $product->is_onSale == 0 ? "JD" :''}}</span>
-                                @if ($product->is_onSale == 1)
-                                <span class="text-danger h4">{{ $product->sale_price }} JD</span>
-                                @endif
+                           <a class="text-decoration-none" href="{{ route('singleProduct',$product->id)}}">
+                            <h5 class="">{{ $product->name
+                                }}</h5>
+                        </a>
+                        <a class="text-decoration-none text-purple " href="{{ route  ('singleCategory',$product->category_id) }}">
+                            <p class="mb-1 text-truncate">{{
+                                $product->category->name }}</p>
+                        </a>
+                        <h5 class="mb-3">
+                            <span class="{{ $product->is_onSale == 1 ? 'text-decoration-line-through fw-light' : ''  }}">
+                                {{$product->price}} {{ $product->is_onSale == 0 ? "JD" :''}}</span>
+                            @if ($product->is_onSale == 1)
+                            <span class="text-danger h4 ms-2">{{ $product->sale_price }}JD</span>
+                            @endif
+                        </h5>
 
-                            </h5>
-
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-toggle="modal"
-                                data-target="#exampleModalCenter">
-                                add to cart </button>
+                           <!-- Button trigger modal -->
+                           <button type="button" class=" btn btn-purple rounded-0" data-toggle="modal" data-target="#exampleModalCenter">
+                            add to cart </button>
 
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"

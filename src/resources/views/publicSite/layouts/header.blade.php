@@ -42,7 +42,7 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link rel="stylesheet" href="{{ asset('assets2/css/custom.css') }}">
 
-    
+
 </head>
 
 <body>
@@ -87,17 +87,15 @@
                 {{-- End Searh part --}}
 
                 <ul class="navbar-nav mr-auto d-md-flex w-100  d-lg-flex justify-content-around public-menu">
-                    <li class="nav-item text-center"><a href="/Crafty" class="nav-link {{ request()->is('Crafty') ? 'active' : ''}}">Home</a></li>
+                    <li class="nav-item text-center"><a href="/" class="nav-link {{ request()->is('Crafty') ? 'active' : ''}}">Home</a></li>
                     <li class="nav-item  submenu dropdown">
                         <a href="{{ route('allCategories' )}}"
                             class="nav-link {{ request()->is('AllCategories') ? 'active' : ''}}">Categories</a>
                         @isset($categories)
                         <ul class="dropdown-menu">
                             @foreach ($categories as $category )
-                            <li class="nav-item">
-                                <a class="nav-link text-dark justify-content-center px-2"
-                                    href="{{ route('categories.show',$category->id )}}">{{ $category->name }}</a>
-                            </li>
+                                <a class="dropdown-item text-purple fw-bold"
+                                    href="{{ route('singleCategory',$category->id )}}">{{ $category->name }}</a>
                             @endforeach
                         </ul>
                         @endisset

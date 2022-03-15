@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class LandingController extends Controller
@@ -14,8 +15,10 @@ class LandingController extends Controller
      */
     public function index()
     {
-        $categories =Category::all();
-        return view('publicSite.landing',compact('categories'));
+        $categories   = Category::all();
+        $newProducts  = Product::where("is_new",1)->take(10)->get();
+        $saleProducts = Product::where("is_onSale",1)->take(10)->get();
+        return view('publicSite.landing',compact('categories','newProducts', 'saleProducts' ));
     }
 
     /**

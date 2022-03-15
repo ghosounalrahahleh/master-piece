@@ -6,7 +6,7 @@
     <div class="row justify-content-center align-items-center mb-5 mx-auto pb-2">
         <div class="col-md-5  heading-section ftco-animate">
             <div class="page_link">
-                <a class="text-decoration-none h6 text-capitalize text-purple" href="/Crafty">Home</a>
+                <a class="text-decoration-none h6 text-capitalize text-purple" href="{{ route("home") }}">Home</a>
                 <a class="text-decoration-none h6 text-capitalize text-purple" href="{{ route('allCategories') }}">&#10095;
                     Categories</a>
             </div>
@@ -34,7 +34,7 @@
                                 @foreach ($categories as $category)
                                 <li class="category-title bg-transparent list-group-item">
                                     <a class="text-decoration-none h6 text-capitalize text-purple"
-                                        href="{{ route('categories.show', $category->id ) }}">
+                                        href="{{ route('singleProduct', $category->id ) }}">
                                         {{ $category->name }}</a>
                                 </li>
                                 @endforeach
@@ -55,7 +55,7 @@
                         <div class="card-body">
                             <a class="text-decoration-none" href="{{ route("singleProduct",$product->id) }}"><h5
                                     class="">{{ $product->name }}</h5></a>
-                            <a class="text-decoration-none text-purple fw-light " href="{{ route("categories.show",$product->category_id) }}"><p class="mb-1 text-truncate">{{
+                            <a class="text-decoration-none text-purple fw-light " href="{{ route("singleCategory",$product->category_id) }}"><p class="mb-1 text-truncate">{{
                                     $product->category->name }}</p></a>
                             <h5 class="mb-3">
                                 <span

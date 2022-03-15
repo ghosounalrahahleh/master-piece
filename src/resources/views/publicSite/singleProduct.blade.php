@@ -11,7 +11,7 @@
                     href="{{ route('allCategories') }}">&#10095;
                     Categories</a>
                 <a class="text-decoration-none h6 text-capitalize text-purple "
-                    href="{{ route('categories.show',$product->category_id) }}">&#10095;
+                    href="{{ route('singleCategory',$product->category_id)}}">&#10095;
                     {{ $product->category->name }}</a>
                 <a class="text-decoration-none h6 text-capitalize text-purple ">
                     &#10095; <span class="text-decoration-underline">{{ $product->name }}</span></a>
@@ -52,7 +52,7 @@
                             <h1 class="mtext-105 cl2 js-name-detail p-b-14 font-weight-bold mb-3">
                                 {{ $product->name }}
                             </h1>
-                            <a class="text-decoration-none text-purple fw-light mt-5" href="{{ route("categories.show",$product->category_id) }}"><p class="mb-3 text-truncate">{{
+                            <a class="text-decoration-none text-purple fw-light mt-5" href="{{ route("singleCategory",$product->category_id) }}"><p class="mb-3 text-truncate">{{
                                     $product->category->name }}</p></a>
                             <p class="text-purple ">{{ $product->description }}</p>
 
@@ -87,10 +87,8 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- comment  -->
                 <div class="flex-w flex-m p-l-100 p-t-40 respon7">
-
                 </div>
             </div>
         </div>
