@@ -47,7 +47,7 @@
                                         <tr>
                                             <td class="ps-4"> {{ $comment->id }} </td>
                                             <td class="ps-4">{{ $comment->user->name }} </td>
-                                            <td class="ps-4 ">{{ $comment->content }}</td>
+                                            <td class="ps-4">{{ $comment->content }}</td>
                                             <td class="ps-4 ">{{ $comment->rate }}</td>
                                         </tr>
                                         @endforeach

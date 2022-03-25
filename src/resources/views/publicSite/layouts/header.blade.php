@@ -5,6 +5,11 @@
     <title>Crafty-@yield('title','')</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Crafty is an e-commerce website for hand crafts. You can find Crochet, Drawing, Quilling,
+         Clay crafts, and Haymaking products ">
+    {{-- <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('img/apple-icon.png') }}"> --}}
+    <link rel="icon" type="image/png" href="{{ asset('images/iconLogo.png') }}">
 
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800,900&display=swap"
         rel="stylesheet">
@@ -38,8 +43,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     {{-- slider --}}
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
     <link rel="stylesheet" href="{{ asset('assets2/css/custom.css') }}">
 
 
@@ -47,7 +56,7 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark  ftco-navbar-light" id="ftco-navbar">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark  ftco-navbar-light" id="ftco-navbar">
         <div class="container d-flex align-items-center justify-content-between ">
 
             <div class=" col-md-2 col-sm-3 d-flex align-items-center py-2">
@@ -57,7 +66,7 @@
 
             <div class="col-md-6 col-sm-3 d-lg-flex d-md-flex d-sm-none d-none align-items-center py-2">
                 {{-- Search part --}}
-                <form action="" method="get" class="searchform order-lg-last w-100">
+                <form action="{{ route('search') }}" method="get" class="searchform order-lg-last w-100">
                     {{-- @csrf --}}
                     <div class="form-group d-flex">
                         <input type="text" class="form-control pl-3" placeholder="Search" name="search" required>
@@ -73,10 +82,10 @@
                 <span class="oi oi-menu"></span>
             </button>
 
-            <div class="collapse navbar-collapse col-md-4"  id="ftco-nav">
+            <div class="collapse navbar-collapse col-md-4" id="ftco-nav">
 
                 {{-- Search part --}}
-                <form action="" method="get" class="searchform order-lg-last d-lg-none d-md-none d-sm-block" style=" ">
+                <form action="{{ route('search') }}" method="get" class="searchform order-lg-last d-lg-none d-md-none d-sm-block" style=" ">
                     {{-- @csrf --}}
                     <div class="form-group d-flex">
                         <input type="text" class="form-control pl-3" placeholder="Search" name="search" required>
@@ -87,15 +96,16 @@
                 {{-- End Searh part --}}
 
                 <ul class="navbar-nav mr-auto d-md-flex w-100  d-lg-flex justify-content-around public-menu">
-                    <li class="nav-item text-center"><a href="/" class="nav-link {{ request()->is('Crafty') ? 'active' : ''}}">Home</a></li>
+                    <li class="nav-item text-white"><a href="/"
+                            class="nav-link {{ request()->is('Crafty') ? 'active' : ''}}">Home</a></li>
                     <li class="nav-item  submenu dropdown">
                         <a href="{{ route('allCategories' )}}"
                             class="nav-link {{ request()->is('AllCategories') ? 'active' : ''}}">Categories</a>
                         @isset($categories)
                         <ul class="dropdown-menu">
                             @foreach ($categories as $category )
-                                <a class="dropdown-item text-purple fw-bold"
-                                    href="{{ route('singleCategory',$category->id )}}">{{ $category->name }}</a>
+                            <a class="dropdown-item text-purple fw-bold"
+                                href="{{ route('singleCategory',$category->id )}}">{{ $category->name }}</a>
                             @endforeach
                         </ul>
                         @endisset
@@ -105,26 +115,34 @@
 
 
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->is('login') ? 'active' : ''}}" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        <a class="nav-link {{ request()->is('login') ? 'active' : ''}}" href="{{ route('login') }}">{{
+                            __('Login') }}</a>
                     </li>
                     @endif
 
                     @if (Route::has('register'))
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->is('register') ? 'active' : ''}}" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        <a class="nav-link {{ request()->is('register') ? 'active' : ''}}"
+                            href="{{ route('register') }}">{{ __('Register') }}</a>
                     </li>
                     @endif
                     @else
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{ route('users.index') }}"
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{ route('userProfile.index') }}"
                             role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }}
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            @if (auth()->user()->role_id==3)
+                            <a class="dropdown-item" href="{{ route('userProfile.index') }}">
+                                {{ __('Profile') }}
+                            </a>
+                            @else
                             <a class="dropdown-item" href="{{ route('users.index') }}">
                                 {{ __('Profile') }}
                             </a>
+                            @endif
 
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();">
@@ -137,6 +155,21 @@
                         </div>
                     </li>
                     @endguest
+                    @if (session('cart'))
+                    <li class="nav-item dropdown">
+                        <a class="nav-link {{ request()->is('cart') ? 'active' : ''}}" href="{{ route('cart.index') }}">
+                            <i class="icon-shopping-cart "></i>
+                            <span class="cart-counter absolute">
+                                {{ count(session("cart")) }}
+                            </span> </a>
+                    </li>
+                    @else
+                    <li class="nav-item dropdown">
+                        <a class="nav-link {{ request()->is('cart') ? 'active' : ''}}" href="{{ route('emptyCart') }}">
+                            <i class="icon-shopping-cart "></i></a>
+                    </li>
+                    @endif
+
                 </ul>
             </div>
         </div>

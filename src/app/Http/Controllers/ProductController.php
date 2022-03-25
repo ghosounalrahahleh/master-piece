@@ -102,9 +102,14 @@ class ProductController extends Controller
     }
     public function productShow($id)
     {
-        $product    = Product::find($id);
-        $comments   = Comment::where('product_id', $id)->paginate(5);
-        return view('publicSite.singleProduct', compact('product', 'comments'));
+        $product         = Product::find($id);
+        $comments        = Comment::where('product_id', $id)->paginate(5);
+        $count           = Comment::where('product_id', $id)
+                            ->where('status', 'Delivered')
+                            ->count();
+                           
+        $relatedProducts = Product::where('category_id',$product->category_id)->take(10)->get();
+        return view('publicSite.singleProduct', compact('product', 'comments', 'count', 'relatedProducts'));
     }
 
     /**
@@ -201,9 +206,9 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::find($id);
-        $category->delete();
+        $product = Product::find($id);
+        $product->delete();
         session()->flash('message', "The category has been deleted successfully");
-        return redirect()->route('categories.index');
+        return redirect()->route('products.index');
     }
 }

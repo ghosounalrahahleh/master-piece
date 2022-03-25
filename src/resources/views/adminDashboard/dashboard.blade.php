@@ -10,13 +10,12 @@
               <i class="material-icons opacity-10">weekend</i>
             </div>
             <div class="text-end pt-1">
-              <p class="text-sm mb-0 text-capitalize">Orders</p>
-              <h4 class="mb-0">{{ $orderDetails }}</h4>
+              <h3 class=" mb-3 text-capitalize">Orders</h3>
+              <h1 class="mb-0">{{ $orderDetails }}</h1>
             </div>
           </div>
           <hr class="dark horizontal my-0">
           <div class="card-footer p-3">
-            <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+55% </span>than lask week</p>
           </div>
         </div>
       </div>
@@ -27,13 +26,12 @@
               <i class="material-icons opacity-10">person</i>
             </div>
             <div class="text-end pt-1">
-              <p class="text-sm mb-0 text-capitalize"> Users</p>
-              <h4 class="mb-0">{{ $users  }}</h4>
+              <h3 class=" mb-3 text-capitalize"> Users</h3>
+              <h1 class="mb-0">{{ $users  }}</h1>
             </div>
           </div>
           <hr class="dark horizontal my-0">
           <div class="card-footer p-3">
-            <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+3% </span>than lask month</p>
           </div>
         </div>
       </div>
@@ -44,13 +42,12 @@
               <i class="material-icons opacity-10">person</i>
             </div>
             <div class="text-end pt-1">
-              <p class="text-sm mb-0 text-capitalize">Total Products</p>
-              <h4 class="mb-0">{{ $products }}</h4>
+              <h3 class=" mb-3 text-capitalize">Total Products</h3>
+              <h1 class="mb-0">{{ $products }}</h1>
             </div>
           </div>
           <hr class="dark horizontal my-0">
           <div class="card-footer p-3">
-            <p class="mb-0"><span class="text-danger text-sm font-weight-bolder">-2%</span> than yesterday</p>
           </div>
         </div>
       </div>
@@ -61,13 +58,12 @@
               <i class="material-icons opacity-10">weekend</i>
             </div>
             <div class="text-end pt-1">
-              <p class="text-sm mb-0 text-capitalize">Sales</p>
-              <h4 class="mb-0">{{ $sales }} JD</h4>
+              <h3 class=" mb-3 text-capitalize">Sales</h3>
+              <h1 class="mb-0">{{ $sales }} JD</h1>
             </div>
           </div>
           <hr class="dark horizontal my-0">
           <div class="card-footer p-3">
-            <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+5% </span>than yesterday</p>
           </div>
         </div>
       </div>

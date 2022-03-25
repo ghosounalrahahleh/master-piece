@@ -13,7 +13,7 @@
                         <a href="{{ route('singleCategory',$category->id) }}">
                             <div class="item text-center">
                                 <div>
-                                    <img class="item__img" src="{{ asset($category->image) }}"
+                                    <img  class="item__img " src="{{ asset($category->image) }}"
                                         alt="{{ $category->name }}">
                                     <p class="mt-3 text-center"> <strong>{{ $category->name }}</strong></p>
                                 </div>
@@ -44,17 +44,19 @@
                     <div class="MultiCarousel-inner">
                         @foreach ($newProducts as $product)
                         <div class="item section2__item ">
-                            <div class="border-0  card">
-                                <a class="" href="{{ route('singleProduct',$product->id) }}" ><img height="150"
-                                        src="{{asset($product->main_image)}}" class="card-img-top"
-                                        alt="Company-logo"></a>
-                                <div class="ps-0  card-body">
-                                    <a class="text-decoration-none" href="{{ route('singleProduct',$product->id)
-                                        }}"><h5 class="">{{ $product->name
-                                            }}</h5></a>
-                                    <a class="text-decoration-none text-purple " href="{{ route('singleCategory',$product->category_id) }}"><p
-                                            class="mb-1 text-truncate">{{
-                                            $product->category->name }}</p></a>
+                            <div class="card border-0  ">
+                                <a href="{{ route('singleProduct',$product->id) }}">
+                                    <img height="150" src="{{asset($product->main_image)}}" class="card-img-top"
+                                        alt="{{ $product->name }}"></a>
+                                <div class="card-body ps-0 ">
+                                    <a class="text-decoration-none" href="{{ route('singleProduct',$product->id)}}">
+                                        <h5 class="text-truncate">{{ $product->name }}</h5>
+                                    </a>
+                                    <a class="text-decoration-none text-purple "
+                                        href="{{ route('singleCategory',$product->category_id) }}">
+                                        <h6 class="mb-3 text-truncate "><i class="category_link">
+                                                {{$product->category->name }}</i> </h6>
+                                    </a>
                                     <h5 class="mb-3">
                                         <span
                                             class="{{ $product->is_onSale == 1 ? 'text-decoration-line-through fw-light' : ''  }}">
@@ -64,9 +66,17 @@
                                         @endif
                                     </h5>
                                     <!-- Button trigger modal -->
-                                    <button type="button" class=" btn btn-purple rounded-0" data-toggle="modal"
-                                        data-target="#exampleModalCenter">
-                                        add to cart </button>
+                                    <form method="POST" action="{{ route('cart.store') }}">
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{ $product->id }}">
+                                        <input type="hidden" name="name" value="{{ $product->name }}">
+                                        <input type="hidden" name="price" value="{{ $product->price }}">
+                                        <input type="hidden" name="sale_price" value="{{ $product->sale_price }}">
+                                        <input type="hidden" name="id" value="{{ $product->id }}">
+                                        <input type="hidden" name="image" value="{{ $product->main_image }}">
+                                        <button type="submit" class=" btn btn-purple rounded-0" data-toggle="modal"
+                                            data-target="#exampleModalCenter">  add to cart </button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -118,12 +128,12 @@
                                 <div class="ps-0  card-body">
                                     <a class="text-decoration-none" href="{{ route('singleProduct',$product->id)
                                         }}">
-                                        <h5 class="">{{ $product->name
-                                            }}</h5>
+                                        <h5 class="text-truncate">{{ $product->name}}</h5>
                                     </a>
-                                    <a class="text-decoration-none text-purple " href="{{ route('singleCategory',$product->category_id) }}">
-                                        <p class="mb-1 text-truncate">{{
-                                            $product->category->name }}</p>
+                                    <a class="text-decoration-none text-purple "
+                                        href="{{ route('singleCategory',$product->category_id) }}">
+                                        <h6 class="mb-3 text-truncate "><i class="category_link">
+                                                {{$product->category->name }}</i> </h6>
                                     </a>
                                     <h5 class="mb-3">
                                         <span
@@ -134,9 +144,18 @@
                                         @endif
                                     </h5>
                                     <!-- Button trigger modal -->
-                                    <button type="button" class=" btn btn-purple rounded-0" data-toggle="modal"
-                                        data-target="#exampleModalCenter">
-                                        add to cart </button>
+                                    <form method="POST" action="{{ route('cart.store') }}">
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{ $product->id }}">
+                                        <input type="hidden" name="name" value="{{ $product->name }}">
+                                        <input type="hidden" name="price" value="{{ $product->price }}">
+                                        <input type="hidden" name="sale_price" value="{{ $product->sale_price }}">
+                                        <input type="hidden" name="id" value="{{ $product->id }}">
+                                        <input type="hidden" name="image" value="{{ $product->main_image }}">
+                                        <button type="submit" class=" btn btn-purple rounded-0" data-toggle="modal"
+                                            data-target="#exampleModalCenter">
+                                            add to cart </button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -181,20 +200,21 @@
         <div class="container section1__slider">
             <div class="row">
                 <div class="col-lg-3 text-center">
-                        <img class="service__img" src="{{ asset('/images/download.png') }}" alt="{{ $category->name }}">
-                        <h4 class="mt-3 text-center text-purple font-Lobster"> <strong>Fast Delivery</strong></h4>
+                    <img class="service__img" src="{{ asset('/images/download.jfif') }}" alt="{{ $category->name }}">
+                    <h4 class="mt-3 text-center text-purple font-Lobster"> <strong>Fast Delivery</strong></h4>
                 </div>
                 <div class="col-lg-3 text-center">
-                        <img class="service__img" src="{{ asset('/images/download.jfif') }}" alt="{{ $category->name }}">
-                        <h4 class="mt-3 text-center text-purple font-Lobster"> <strong>Unique in the world</strong></h4>
+                    <img class="service__img" src="{{ asset('/images/download.png') }}" alt="{{ $category->name }}">
+                    <h4 class="mt-3 text-center text-purple font-Lobster"> <strong>Unique in the world</strong></h4>
                 </div>
                 <div class="col-lg-3 text-center">
-                        <img class="service__img" src="{{ asset('/images/label-logo-lettering-hand-made-260nw-1770592628.jpg') }}" alt="{{ $category->name }}">
-                        <h4 class="mt-3 text-center text-purple font-Lobster"> <strong>Made with Love</strong></h4>
+                    <img class="service__img text-purple " src="{{ asset('/images/mwl.jpg') }}"
+                        alt="{{ $category->name }}">
+                    <h4 class="mt-3 text-center text-purple font-Lobster"> <strong>Made with Love</strong></h4>
                 </div>
                 <div class="col-lg-3 text-center">
-                        <img class="service__img text-purple "   src="{{ asset('/images/mwl.jpg') }}" alt="{{ $category->name }}">
-                        <h4 class="mt-3 text-center font-Lobster"> <strong>100% hand made</strong></h4>
+                    <img class="service__img" src="{{ asset('/images/made.png') }}" alt="{{ $category->name }}">
+                    <h4 class="mt-3 text-center font-Lobster"> <strong>100% hand made</strong></h4>
                 </div>
             </div>
         </div>

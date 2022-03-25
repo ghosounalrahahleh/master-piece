@@ -16,15 +16,24 @@
     box-shadow: inset 1px 0 #9c41ec, inset -1px 0 #9c41ec, inset 0 -1px #9c41ec ,inset 0 1px #9c41ec !important;
 }
 
-.page-item.active .page-link {
+.page-item.active .page-link,
+.page-link {
     z-index: 3;
     color: #fff;
     background-color: #9c41ec !important;
     border-color: #9c41ec !important;
 }
-
+.page-item.active .page-link{
+    color: #fff !important;
+    background-color: #9c41ec !important;
+    border-color: #9c41ec !important;
+}
 .nav-link.active{
     color: #fff;
     background-color: #9c41ec !important;
 }
 
+#joinUs__container
+{
+background-image: url('../images/label-logo-lettering-hand-made-260nw-1770592628.jpg');
+}

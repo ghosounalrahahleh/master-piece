@@ -1,8 +1,8 @@
 @extends('publicSite.layouts.master')
 @section('title','Login')
 @section('content')
-<div class="container my-5">
-    <div class="row justify-content-center">
+<div class="container my-5 ftco-section">
+    <div class="row justify-content-center mt-5">
         <div class="col-md-6 col-sm-10">
             <div class="card py-5">
                 <div class="text-center h1 form-title mb-2">{{ __('Login') }}</div>

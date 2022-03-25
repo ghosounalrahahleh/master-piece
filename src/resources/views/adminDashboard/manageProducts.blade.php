@@ -54,76 +54,75 @@
                         @csrf
                         <label class="form-label">Product Name</label>
                         <div class="input-group input-group-outline my-3">
-
                             <input type="text" name="name" class="form-control"
-                                value="@if($update==true){{ $product->name }}@endif" placeholder="">
+                                value="@if($update==true){{ $product->name }}@endif" placeholder="" required>
                         </div>
                         <label class="form-label">Product Description</label>
                         <div class="input-group input-group-outline mb-3">
-
-                            <textarea type="text" name="description" class="form-control"
-                                placeholder=""> @if($update==true){{ $product->description }}@endif</textarea>
+                            <textarea type="text" name="description" class="form-control" placeholder=""
+                                required> @if($update==true){{ $product->description }}@endif</textarea>
                         </div>
 
                         <div class="row">
                             <div class="col-4">
                                 <label class="form-label">Product Price</label>
                                 <div class="input-group input-group-outline mb-3">
-                                    <input type="text" name="price" class="form-control"
-                                        value="@if($update==true){{ $product->price }}@endif" placeholder="">
+                                    <input type="text" name="price" class="form-control" required>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <label class="form-label">Product Sale Price</label>
                                 <div class="input-group input-group-outline mb-3">
-
                                     <input type="text" name="sale_price" class="form-control"
-                                        value="@if($update==true){{ $product->sale_price }}@endif" placeholder="">
+                                        value="@if($update==true){{ $product->sale_price }}@endif" placeholder=""
+                                        required>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <label class="form-label">Quantity</label>
                                 <div class="input-group input-group-outline mb-3">
                                     <input type="text" name="quantity" class="form-control"
-                                        value="@if($update==true){{ $product->quantity }}@endif" placeholder="">
+                                        value="@if($update==true){{ $product->quantity }}@endif" placeholder=""
+                                        required>
                                 </div>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class=" col-4">
                                 <label class="form-label">Color</label>
                                 <div class="input-group input-group-outline mb-3">
                                     <input type="text" name="color" class="form-control"
-                                        value="@if($update==true){{ $product->color }}@endif" placeholder="Color">
+                                        value="@if($update==true){{ $product->color }}@endif" placeholder="Color"
+                                        required>
                                 </div>
                             </div>
                             <div class=" col-4">
                                 <label class="form-label">Size</label>
                                 <div class="input-group input-group-outline mb-3">
-
                                     <input type="text" name="size" class="form-control"
-                                        value="@if($update==true){{ $product->size }}@endif" placeholder="">
+                                        value="@if($update==true){{ $product->size }}@endif" placeholder="" required>
                                 </div>
                             </div>
                             <div class=" col-4">
                                 <label class="form-label">Tag</label>
                                 <div class="input-group input-group-outline mb-3">
                                     <input type="text" name="tag" class="form-control"
-                                        value="@if($update==true){{ $product->tag }}@endif">
+                                        value="@if($update==true){{ $product->tag }}@endif" required>
                                 </div>
                             </div>
                         </div>
                         <input type="hidden" name="owner_id" value="{{ auth()->user()->id }}">
                         <div class="row">
                             <div class="col-4">
+                                <label class="form-label">Is New</label>
                                 <div class="input-group input-group-outline mb-3">
-                                    <label class="form-label"></label>
-                                    <select class="form-control form-select w-100   p-2" name="is_new">
+                                    <select class="form-control form-select w-100   p-2" name="is_new" required>
                                         @if ($update===true)
                                         <option class='w-100' value='{{ $product->is_new}}' selected>
                                             {{ $product->is_new }}</option>
                                         @else
-                                        <option class='w-100' value=''>Is New </option>
+                                        <option class='w-100' value=''> select option... </option>
                                         @endif
                                         <option class='w-100' value='0'>No</option>
                                         <option class='w-100' value='1'>Yes</option>
@@ -131,14 +130,14 @@
                                 </div>
                             </div>
                             <div class="col-4">
+                                <label class="form-label">Is on Sale</label>
                                 <div class="input-group input-group-outline mb-3">
-                                    <label class="form-label"></label>
-                                    <select class="form-control form-select w-100   p-2" name="is_onSale">
+                                    <select class="form-control form-select w-100   p-2" name="is_onSale" required>
                                         @if ($update===true)
                                         <option class='w-100' value='{{ $product->is_onSale}}' selected>
                                             {{ $product->is_onSale }}</option>
                                         @else
-                                        <option class='w-100' value=''>Is on Sale </option>
+                                        <option class='w-100' value=''>select option...</option>
                                         @endif
                                         <option class='w-100' value='0'>No</option>
                                         <option class='w-100' value='1'>Yes</option>
@@ -146,13 +145,14 @@
                                 </div>
                             </div>
                             <div class="col-4">
+                                <label class="form-label">Category</label>
                                 <div class="input-group input-group-outline mb-3">
-                                    <select class="form-select w-100   p-2" name='category_id' value="">
+                                    <select class="form-select w-100   p-2" name='category_id' value="" required>
                                         @if ($update===true)
                                         <option class='w-100' value='{{ $product->category->id }}' selected>{{
                                             $product->category->name }}</option>
                                         @else
-                                        <option class='w-100' value=''>Select product category</option>
+                                        <option class='w-100' value=''>Select product </option>
                                         @endif
                                         @foreach ($categories as $category)
                                         <option class='w-100' value='{{ $category->id }}'>{{ $category->name }}</option>
@@ -163,8 +163,8 @@
                         </div>
                         <div class="row">
                             <div class=" col-4">
-                                <div class=" input-group input-group-outline mb-3 ">
-                                    <input type="file" name="main_image" class="form-control ">
+                                <div class=" input-group input-group-outline mb-3">
+                                    <input type="file" name="main_image" class="form-control " required>
                                 </div>
                             </div>
                             <div class=" col-4">

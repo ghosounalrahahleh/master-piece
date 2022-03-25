@@ -18,8 +18,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('img/apple-icon.png') }}">
-    <link rel="icon" type="image/png" href="{{ asset('img/favicon.png') }}">
+    <meta name="description" content="Crafty is an e-commerce website for hand crafts. You can find Crochet, Drawing, Quilling,
+     Clay crafts, and Haymaking products ">
+   <link rel="icon" type="image/png" href="{{ asset('images/iconLogo.png') }}">
     <title>
         Material Dashboard 2 by Creative Tim
     </title>
@@ -42,12 +43,12 @@
     <link id="pagestyle" href="{{ asset('css/material-dashboard.css?v=3.0.0') }}" rel="stylesheet" />
 
     <!-- Font Awesome Icons -->
-     <!-- our project just needs Font Awesome Solid + Brands -->
-  <link href="/your-path-to-fontawesome/css/fontawesome.css" rel="stylesheet">
-  <link href="/your-path-to-fontawesome/css/brands.css" rel="stylesheet">
-  <link href="/your-path-to-fontawesome/css/solid.css" rel="stylesheet">
+    <!-- our project just needs Font Awesome Solid + Brands -->
+    <link href="/your-path-to-fontawesome/css/fontawesome.css" rel="stylesheet">
+    <link href="/your-path-to-fontawesome/css/brands.css" rel="stylesheet">
+    <link href="/your-path-to-fontawesome/css/solid.css" rel="stylesheet">
 
-        {{-- table stle Links( Maser theme) --}}
+    {{-- table stle Links( Maser theme) --}}
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
@@ -67,7 +68,8 @@
 
     <link rel="stylesheet" href="{{ asset('assets/vendors/perfect-scrollbar/perfect-scrollbar.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendors/bootstrap-icons/bootstrap-icons.css') }}">
-    {{-- <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}"> --}}
+    {{--
+    <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}"> --}}
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.svg') }}" type="image/x-icon">
 
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
@@ -78,20 +80,17 @@
     <aside
         class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 bg-gradient-dark"
         id="sidenav-main">
-        <div class="sidenav-header">
-            <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
-                aria-hidden="true" id="iconSidenav"></i>
-            <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/material-dashboard/pages/dashboard "
-                target="_blank">
-                <img src="{{ asset('img/logo-ct.png') }}" class="navbar-brand-img h-100" alt="main_logo">
-                <span class="ms-1 font-weight-bold text-white">Material Dashboard 2</span>
+        <div class="sidenav-header text-center m-auto">
+            <a class="navbar-brand m-0 pt-0 text-center" href="{{ route('home') }}"  target="_blank">
+                    <span style="font-size:48px ;font-family: 'Oldenburg', cursive;" class="text-white">C</span><span style="font-size:30px" class="text-white mt-2">rafty</span>
             </a>
         </div>
         <hr class="horizontal light mt-0 mb-2">
         <div class="collapse navbar-collapse  w-auto  max-height-vh-100" id="sidenav-collapse-main">
             <ul class="navbar-nav">
                 <li class="nav-item ">
-                    <a class="nav-link text-white {{ request()->is('statics') ? 'active' : ''}} " href="{{ route('statics.index') }}">
+                    <a class="nav-link text-white {{ request()->is('statics') ? 'active' : ''}} "
+                        href="{{ route('statics.index') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">dashboard</i>
                         </div>
@@ -101,7 +100,8 @@
 
                 @if (Auth::user()->role_id === 1)
                 <li class="nav-item">
-                    <a class="nav-link text-white  {{ request()->is('roles') ? 'active' : ''}} " href="{{ route('roles.index') }}">
+                    <a class="nav-link text-white  {{ request()->is('roles') ? 'active' : ''}} "
+                        href="{{ route('roles.index') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">table_view</i>
                         </div>
@@ -109,7 +109,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white {{ request()->is('users') ? 'active' : ''}} " href="{{ route('users.index') }}">
+                    <a class="nav-link text-white {{ request()->is('users') ? 'active' : ''}} "
+                        href="{{ route('users.index') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">table_view</i>
                         </div>
@@ -117,7 +118,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white {{ request()->is('categories') ? 'active' : ''}} " href="{{ route('categories.index') }}">
+                    <a class="nav-link text-white {{ request()->is('categories') ? 'active' : ''}} "
+                        href="{{ route('categories.index') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">table_view</i>
                         </div>
@@ -125,7 +127,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white {{ request()->is('owners') ? 'active' : ''}} " href="{{ route('owners.index') }}">
+                    <a class="nav-link text-white {{ request()->is('owners') ? 'active' : ''}} "
+                        href="{{ route('owners.index') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">table_view</i>
                         </div>
@@ -133,7 +136,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white {{ request()->is('addresses') ? 'active' : ''}}" href="{{ route('addresses.index') }}">
+                    <a class="nav-link text-white {{ request()->is('addresses') ? 'active' : ''}}"
+                        href="{{ route('addresses.index') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">assignment</i>
                         </div>
@@ -142,7 +146,8 @@
                 </li>
                 @endif
                 <li class="nav-item">
-                    <a class="nav-link text-white {{ request()->is('products') ? 'active' : ''}}"  href="{{ route('products.index') }}">
+                    <a class="nav-link text-white {{ request()->is('products') ? 'active' : ''}}"
+                        href="{{ route('products.index') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">table_view</i>
                         </div>
@@ -150,7 +155,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white {{ request()->is('orders') ? 'active' : ''}}"  href="{{ route('orders.index') }}">
+                    <a class="nav-link text-white {{ request()->is('orders') ? 'active' : ''}}"
+                        href="{{ route('orders.index') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">table_view</i>
                         </div>
@@ -159,7 +165,8 @@
                 </li>
                 @if (Auth::user()->role_id === 1)
                 <li class="nav-item">
-                    <a class="nav-link text-white {{ request()->is('comments') ? 'active' : ''}}" href="{{ route('comments.index') }}">
+                    <a class="nav-link text-white {{ request()->is('comments') ? 'active' : ''}}"
+                        href="{{ route('comments.index') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">table_view</i>
                         </div>
@@ -185,9 +192,18 @@
                         <li class="nav-item d-flex align-items-center">
                             <a href="{{ route('profiles.index') }}" class="nav-link text-body font-weight-bold px-0">
                                 <i class="fa fa-user me-sm-1"></i>
-                                <span class="d-sm-inline d-none">Sign In</span>
+                                <span class="d-sm-inline d-none"></span>
                             </a>
                         </li>
+                        <li class="nav-item d-flex align-items-center">
+                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                             document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+</li>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
                         <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
                             <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
                                 <div class="sidenav-toggler-inner">

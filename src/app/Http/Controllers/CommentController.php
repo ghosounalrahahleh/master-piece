@@ -16,8 +16,9 @@ class CommentController extends Controller
      */
     public function index()
     {
+        $update   = false;
         $comments = Comment::paginate(10);
-        return view('adminDashboard.mangeComments',compact('comments'));
+        return view('adminDashboard.mangeComments',compact('comments','update'));
     }
 
     /**
@@ -60,9 +61,12 @@ class CommentController extends Controller
      * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Comment $comment)
+    public function edit($id)
     {
-        //
+        $update   = true;
+        $comment  = Comment::find($id);
+        $comments = Comment::paginate(10);
+        return view('adminDashboard.mangeComments', compact('comments','comment', 'update'));
     }
 
     /**
@@ -72,9 +76,17 @@ class CommentController extends Controller
      * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCommentRequest $request, Comment $comment)
+    public function update(UpdateCommentRequest $request, $id)
     {
-        //
+        $data = $this->validate($request, [
+            "status" => 'required'
+        ]);
+
+        $comment  = Comment::find($id);
+        $comment->status = $request->status;
+        $comment->update();
+        session()->flash('message', "The Comment status has been updated successfully");
+        return redirect()->route('comments.index');
     }
 
     /**
@@ -89,5 +101,19 @@ class CommentController extends Controller
         $comment->delete();
         session()->flash('message', "The comment has been deleted successfully");
         return redirect()->route('comments.index');
+    }
+    public function addComment(StoreCommentRequest $request)
+    {
+
+        $this->validate($request, [
+            'review'  => 'required',
+        ]);
+        Comment::create([
+            "content" => $request->review,
+            "user_id" => $request->user_id,
+            "product_id" => $request->product_id,
+        ]);
+
+        return redirect()->route('singleProduct', $request->product_id);
     }
 }

@@ -67,11 +67,12 @@ class CategoryController extends Controller
     public function show($id)
     {
     }
-    public function categoryShow($id)
+    public function CategoryShow($id)
     {
+        $url = "Category/$id";
         $categories = Category::all();
-        $products   = Product::where('category_id', $id)->paginate(20);
-        return view('publicSite.singleCategory', compact('categories', 'products'));
+        $products   = Product::where('category_id', $id)->paginate(12);
+        return view('publicSite.singleCategory', compact('categories', 'products', 'url'));
     }
     /**
      * Show the form for editing the specified resource.
@@ -127,7 +128,7 @@ class CategoryController extends Controller
     public function categories()
     {
         $categories = Category::all();
-        $products   = Product::paginate(20);
+        $products   = Product::paginate(12);
         return view('publicSite.categories', compact('categories', 'products'));
     }
 }

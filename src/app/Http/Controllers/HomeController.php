@@ -23,9 +23,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return redirect()->route('home');
     }
-/**
+    /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
@@ -39,8 +39,4 @@ class HomeController extends Controller
     {
         return view('ownerDashboard.dashboard');
     }
-
-
-
-
 }

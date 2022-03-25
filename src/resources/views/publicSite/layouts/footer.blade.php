@@ -6,14 +6,11 @@
                     <div class="ftco-footer-widget mb-5 ml-md-4">
                         <h2 class="ftco-heading-2">Quiq Links</h2>
                         <ul class="list-unstyled">
-                            <li><a href="/"><span class="ion-ios-arrow-round-forward mr-2"></span>Home</a></li>
-                            <li><a href="{{ 'about' }}"><span class="ion-ios-arrow-round-forward mr-2"></span>Store</a>
-                            </li>
-                            <li><a href="{{ 'services' }}"><span
+                            <li><a class="text-decoration-none" href="{{ route('home') }}"><span class="ion-ios-arrow-round-forward mr-2"></span>Home</a></li>
+                            <li><a class="text-decoration-none" href="{{ route('allCategories')}}"><span class="ion-ios-arrow-round-forward mr-2"></span>Store</a> </li>
+                            <li><a class="text-decoration-none" href="{{ 'services' }}"><span
                                         class="ion-ios-arrow-round-forward mr-2"></span>About</a></li>
-                            {{-- <li><a href="{{ route('allCategories' )}}"><span
-                                        class="ion-ios-arrow-round-forward mr-2"></span>Companies</a></li> --}}
-                            <li><a href="{{ 'services' }}"><span class="ion-ios-arrow-round-forward mr-2"></span>My
+                            <li><a class="text-decoration-none" href="{{ route('userProfile.index') }}"><span class="ion-ios-arrow-round-forward mr-2"></span>My
                                     Account</a></li>
                         </ul>
                     </div>
@@ -23,13 +20,12 @@
                 <div class="ftco-footer-widget mb-5 ml-md-4">
                     <h2 class="ftco-heading-2">Categories</h2>
                     <ul class="list-unstyled">
-                        <li><a href="/"><span class="ion-ios-arrow-round-forward mr-2"></span>Paper Flower</a></li>
-                        <li><a href="{{ 'about' }}"><span class="ion-ios-arrow-round-forward mr-2"></span>Givaways</a>
-                        </li>
-                        <li><a href="{{ 'services' }}"><span
-                                    class="ion-ios-arrow-round-forward mr-2"></span>Quilling</a></li>
-                        <li><a href=""><span class="ion-ios-arrow-round-forward mr-2"></span>Shadow box</a></li>
-                        <li><a href=""><span class="ion-ios-arrow-round-forward mr-2"></span>cards</a></li>
+                        @for ($i = 0; $i < 4; $i++)
+                        @isset($categories)
+                        <li><a class="text-decoration-none" href="{{ route('singleCategory',$categories[$i]->id )}}"><span class="ion-ios-arrow-round-forward mr-2"></span>{{ $categories[$i]->name }}</a></li>
+                        @endisset
+                        
+                        @endfor
                     </ul>
                 </div>
             </div>
@@ -37,13 +33,8 @@
                 <div class="ftco-footer-widget mb-5 ml-md-4">
                     <h2 class="ftco-heading-2">About</h2>
                     <ul class="list-unstyled">
-                        <li><a href="/"><span class="ion-ios-arrow-round-forward mr-2"></span>About us</a></li>
-                        <li><a href="/About"><span class="ion-ios-arrow-round-forward mr-2"></span>Our Team</a>
+                        <li><a class="text-decoration-none" href="{{ route('JoinUs') }}"><span class="ion-ios-arrow-round-forward mr-2 "></span>Join Us</a>
                         </li>
-                        <li><a href="/joinUs"><span class="ion-ios-arrow-round-forward mr-2"></span>Join Us</a>
-                        </li>
-                        <li><a href=""><span class="ion-ios-arrow-round-forward mr-2"></span>Delivery</a></li>
-                        <li><a href=""><span class="ion-ios-arrow-round-forward mr-2"></span>Take photos</a></li>
                     </ul>
                 </div>
             </div>
@@ -60,33 +51,26 @@
                                 target="_blank"><span class="icon-instagram"></span></a></li>
                         <li class="ftco-animate mr-4"><a href="https://www.instagram.com/gswnlrhhl/"
                                 target="_blank"><span class="icon-instagram"></span></a></li>
-
                     </ul>
                 </div>
             </div>
         </div>
-
-
-
     </div>
     {{--
     </div> --}}
-        <div class="col-md-12 text-center">
+    <div class="col-md-12 text-center">
 
-            <p>
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                Copyright &copy;<script>
-                    document.write(new Date().getFullYear());
-                </script> All rights reserved | This website is made with <i class="icon-heart" aria-hidden="true"></i>
-                by <a href="https://google.com" target="_blank">Kafou Team</a>
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            </p>
-        </div>
+        <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>
+                document.write(new Date().getFullYear());
+            </script> All rights reserved | This website is made with <i class="icon-heart" aria-hidden="true"></i>
+            by <a href="https://google.com" target="_blank">Kafou Team</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+        </p>
+    </div>
     </div>
 </footer>
-
-
-
 <!-- loader -->
 <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
         <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />

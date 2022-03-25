@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\OwnerInfo;
 use App\Http\Requests\StoreOwnerInfoRequest;
 use App\Http\Requests\UpdateOwnerInfoRequest;
@@ -45,7 +46,6 @@ class OwnerInfoController extends Controller
             'logo'         => 'required',
             'phone'        => 'required',
             'address'      => 'required',
-
         ]);
 
         if ($request->hasFile('logo')) {
@@ -105,7 +105,7 @@ class OwnerInfoController extends Controller
         $owner = OwnerInfo::find($id);
         $this->validate($request, [
             'company_name' => 'required|max:250',
-            'email'        => 'required|email',
+            'email'        => 'required|email|unique:owner_infos',
             'phone'        => 'required',
             'address'      => 'required',
         ]);
@@ -140,4 +140,48 @@ class OwnerInfoController extends Controller
         session()->flash('message', "The owner has been deleted successfully");
         return redirect()->route('owners.index');
     }
+    public function JoinUs()
+    {
+       if(Auth::check()){
+          return view('publicSite.joinUs');
+       }else{
+          return redirect()->route("login");
+       }
+    }
+
+
+   public function joinStore(StoreOwnerInfoRequest $request)
+   {
+       //dd($request->logo);
+       $this->validate($request, [
+           'company_name' => 'required| max:250',
+            'email'        => 'required| email ',
+            'logo'         => 'required',
+            'phone'        => 'required',
+            'address'      => 'required',
+        ]);
+
+        if ($request->hasFile('logo')) {
+            $file = $request->logo;
+            $new_file = time() . $file->getClientOriginalName();
+            $file->move('images/', $new_file);
+        }
+
+        OwnerInfo::create(
+            [
+                "company_name" => $request->company_name,
+                "email"   => $request->email,
+                "phone"   => $request->phone,
+                "address" => $request->address,
+                "logo"    => 'images/' . $new_file,
+                "user_id" => $request->user_id,
+                ]
+            );
+
+            //dd($request);
+        session()->flash('message', "We received your request successfully!
+                           we will contact soon.");
+        return view('publicSite.joinUs');
+
+   }
 }

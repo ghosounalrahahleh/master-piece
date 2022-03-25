@@ -1,8 +1,8 @@
 @extends('publicSite.layouts.master')
 @section('title','Register')
 @section('content')
-<div class="container my-5 w-lg-50 w-md-50 w-sm-100">
-    <div class="row justify-content-center">
+<div class="ftco-section container my-5 w-lg-50 w-md-50 w-sm-100 " >
+    <div class="row justify-content-center ">
         <div class="col-md-6 col-sm-10 rounded ">
             <div class="card py-5">
                 <div class="text-center h1 form-title mb-2">{{ __('Register') }}</div>

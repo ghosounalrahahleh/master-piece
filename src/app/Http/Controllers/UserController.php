@@ -73,7 +73,7 @@ class UserController extends Controller
     {
        $user     = User::find($id);
        $address  = Address::where('user_id',$id)->get();
-       $comments = Comment::where('user_id',$id)->get();
+       $comments = Comment::where('user_id',$id)->paginate(5);
        $orders   = Order::where('user_id',$id)->get();
        return view('adminDashboard.userDetail',compact('user', 'address', 'comments', 'orders' ));
     }
@@ -112,7 +112,7 @@ class UserController extends Controller
         $user = User::find($id);
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = $request->password;
+        $user->password = Hash::make($request->password);
         $user->role_id = $request->role_id;
         $user->update();
         session()->flash('message', "The user has been updated successfully");
