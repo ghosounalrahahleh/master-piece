@@ -24,7 +24,7 @@
                         @isset($categories)
                         <li><a class="text-decoration-none" href="{{ route('singleCategory',$categories[$i]->id )}}"><span class="ion-ios-arrow-round-forward mr-2"></span>{{ $categories[$i]->name }}</a></li>
                         @endisset
-                        
+
                         @endfor
                     </ul>
                 </div>
@@ -43,14 +43,11 @@
                     <h2 class="ftco-heading-2 mb-0">Connect Us</h2>
                     <ul class="ftco-footer-social list-unstyled float-md-left float-lfet  mt-3">
                         <li class="ftco-animate mr-5 mt-3 "><a
-                                href="https://www.facebook.com/people/%D8%BA%D8%B5%D9%88%D9%86-%D8%A7%D9%84%D8%B1%D8%AD%D8%A7%D8%AD%D9%84%D8%A9/100008018806086/"
+                                href="https://www.facebook.com/ghosounhandcraft/"
                                 target="_blank"><span class="icon-facebook"></span></a></li>
-                        <li class="ftco-animate mr-5 mt-3"><a href="https://www.instagram.com/gswnlrhhl/"
+                        <li class="ftco-animate mr-5 mt-3"><a href="https://www.instagram.com/ghhandcraft/"
                                 target="_blank"><span class="icon-instagram"></span></a></li>
-                        <li class="ftco-animate mr-5 mt-3"><a href="https://www.instagram.com/gswnlrhhl/"
-                                target="_blank"><span class="icon-instagram"></span></a></li>
-                        <li class="ftco-animate mr-4"><a href="https://www.instagram.com/gswnlrhhl/"
-                                target="_blank"><span class="icon-instagram"></span></a></li>
+
                     </ul>
                 </div>
             </div>
@@ -65,7 +62,7 @@
             Copyright &copy;<script>
                 document.write(new Date().getFullYear());
             </script> All rights reserved | This website is made with <i class="icon-heart" aria-hidden="true"></i>
-            by <a href="https://google.com" target="_blank">Kafou Team</a>
+            by <a href="https://jo.linkedin.com/in/ghosoun-alrahahleh-62b78b21b" target="_blank">Ghosoun Alrahahleh</a>
             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
         </p>
     </div>
