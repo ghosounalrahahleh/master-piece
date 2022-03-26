@@ -46,7 +46,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
     {{-- slider --}}
 
     <link rel="stylesheet" href="{{ asset('assets2/css/custom.css') }}">
@@ -159,9 +159,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link {{ request()->is('cart') ? 'active' : ''}}" href="{{ route('cart.index') }}">
                             <i class="icon-shopping-cart "></i>
-                            <span class="cart-counter absolute">
-                                {{ count(session("cart")) }}
-                            </span> </a>
+                            <span class="cart-counter absolute">{{ count(session("cart")) }}  </span> </a>
                     </li>
                     @else
                     <li class="nav-item dropdown">

@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
                 ->on('roles')
                 ->onDelete('cascade');
             $table->string('email')->unique();
+            $table->integer('phone')->nullable();
             $table->text('image')->default('images/defult.png');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

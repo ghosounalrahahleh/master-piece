@@ -1,5 +1,5 @@
 @extends('adminDashboard.layouts.master')
-
+@section('title','Manage comments')
 @section('content')
 
 <div class="container-fluid py-4">

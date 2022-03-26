@@ -22,7 +22,7 @@
      Clay crafts, and Haymaking products ">
    <link rel="icon" type="image/png" href="{{ asset('images/iconLogo.png') }}">
     <title>
-        Material Dashboard 2 by Creative Tim
+      Crafty-Admin Dashboard- @yield('title','')
     </title>
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css"

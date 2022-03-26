@@ -21,9 +21,9 @@
                     <h2 class="ftco-heading-2">Categories</h2>
                     <ul class="list-unstyled">
                         @for ($i = 0; $i < 4; $i++)
-                        @isset($categories)
+                        @if(count($categories))
                         <li><a class="text-decoration-none" href="{{ route('singleCategory',$categories[$i]->id )}}"><span class="ion-ios-arrow-round-forward mr-2"></span>{{ $categories[$i]->name }}</a></li>
-                        @endisset
+                        @endif
 
                         @endfor
                     </ul>
@@ -55,9 +55,9 @@
     </div>
     {{--
     </div> --}}
-    <div class="col-md-12 text-center">
+    <div class="col-md-12 m-auto text-center">
 
-        <p>
+        <p class="text-center">
             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             Copyright &copy;<script>
                 document.write(new Date().getFullYear());

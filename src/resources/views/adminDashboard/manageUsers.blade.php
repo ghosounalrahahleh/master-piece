@@ -1,5 +1,5 @@
 @extends('adminDashboard.layouts.master')
-
+@section('title','Manage users')
 @section('content')
 <div class="container-fluid py-4">
     <div class="row justify-content-center">
@@ -41,23 +41,24 @@
                         action="@if($update === true){{ route('users.update',$user->id) }} @else {{ route('users.store') }} @endif"
                         enctype="multipart/form-data">
                         @csrf
+                        <label class="form-label">User Name</label>
                         <div class="input-group input-group-outline my-3">
-                            <label class="form-label"></label>
-                            <input type="text" name="name" class="form-control" placeholder="User Name"
+                            <input type="text" name="name" class="form-control" placeholder=""
                                 value="@if($update==true){{ $user->name }}@endif">
                         </div>
 
+                        <label class="form-label">Email</label>
                         <div class="input-group input-group-outline my-3">
-                            <label class="form-label"></label>
-                            <input type="email" name="email" class="form-control" placeholder="Email"
+                            <input type="email" name="email" class="form-control" placeholder=""
                                 value="@if($update==true){{ $user->email }}@endif">
                         </div>
 
+                        <label class="form-label">Password</label>
                         <div class="input-group input-group-outline mb-3">
-                            <label class="form-label"></label>
-                            <input type="password" name="password" class="form-control" placeholder="Password"
+                            <input type="password" name="password" class="form-control" placeholder=""
                                 value="@if($update==true){{ $user->password }}@endif">
                         </div>
+                        <label class="form-label">User Role</label>
                         <div class="input-group input-group-outline mb-3">
                             <select class="form-control w-100 mb-4  p-2" name='role_id' value="">
                                 @if ($update===true)
@@ -122,7 +123,6 @@
                                     <th class=" font-weight-bolder"> User Role</th>
                                     <th class=" font-weight-bolder"> User photo</th>
                                     <th class=" font-weight-bolder"> </th>
-
                                 </tr>
                             </thead>
                             <tbody>

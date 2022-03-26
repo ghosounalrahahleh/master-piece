@@ -13,7 +13,7 @@
                         <a href="{{ route('singleCategory',$category->id) }}">
                             <div class="item text-center">
                                 <div>
-                                    <img  class="item__img " src="{{ asset($category->image) }}"
+                                    <img class="item__img " src="{{ asset($category->image) }}"
                                         alt="{{ $category->name }}">
                                     <p class="mt-3 text-center"> <strong>{{ $category->name }}</strong></p>
                                 </div>
@@ -75,8 +75,24 @@
                                         <input type="hidden" name="id" value="{{ $product->id }}">
                                         <input type="hidden" name="image" value="{{ $product->main_image }}">
                                         <button type="submit" class=" btn btn-purple rounded-0" data-toggle="modal"
-                                            data-target="#exampleModalCenter">  add to cart </button>
+                                            data-target="#exampleModalCenter"> add to cart </button>
                                     </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered " role="document">
+                                <div class="modal-content">
+                                    <div class="modal-body p-5 d-flex flex-column align-items-center">
+                                        <img width="100px" src="{{ asset('images/success.png') }}" alt="add to cart successfully">
+                                        <h5 class="text-center mt-3"> {{ $product->name }} added to cart
+                                            successfully !</h5>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-purple" data-dismiss="modal">Close</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -84,22 +100,6 @@
                     </div>
                     <button class="btn pre-btn leftLst2 leftLst ">&#10094; </button>
                     <button class="btn next-btn rightLst2 rightLst "> &#10095;</button>
-                </div>
-            </div>
-        </div>
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered " role="document">
-                <div class="modal-content">
-                    <div class="modal-body p-5 d-flex flex-column align-items-center">
-                        <img width="100px" src="{{ asset('images/success.png') }}" alt="add to cart successfully">
-                        <h5 class="text-center mt-3"> {{ $product->name }} added to cart
-                            successfully !</h5>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-purple" data-dismiss="modal">Close</button>
-                    </div>
                 </div>
             </div>
         </div>
@@ -159,6 +159,22 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered " role="document">
+                                <div class="modal-content">
+                                    <div class="modal-body p-5 d-flex flex-column align-items-center">
+                                        <img width="100px" src="{{ asset('images/success.png') }}" alt="add to cart successfully">
+                                        <h5 class="text-center mt-3"> {{ $product->name }} added to cart
+                                            successfully !</h5>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-purple" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         @endforeach
                     </div>
                     <button class="btn pre-btn leftLst2 leftLst">&#10094; </button>
@@ -168,22 +184,6 @@
         </div>
 
 
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered " role="document">
-                <div class="modal-content">
-                    <div class="modal-body p-5 d-flex flex-column align-items-center">
-                        <img width="100px" src="{{ asset('images/success.png') }}" alt="add to cart successfully">
-                        <h5 class="text-center mt-3"> {{ $product->name }} added to cart
-                            successfully !</h5>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-purple" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
 
     {{-- section 4 start --}}
@@ -196,29 +196,28 @@
             <hr>
         </div>
     </div>
-    <section class="section1 section4">
-        <div class="container section1__slider">
-            <div class="row">
-                <div class="col-lg-3 text-center">
-                    <img class="service__img" src="{{ asset('/images/download.jfif') }}" alt="{{ $category->name }}">
-                    <h4 class="mt-3 text-center text-purple font-Lobster"> <strong>Fast Delivery</strong></h4>
-                </div>
-                <div class="col-lg-3 text-center">
-                    <img class="service__img" src="{{ asset('/images/download.png') }}" alt="{{ $category->name }}">
-                    <h4 class="mt-3 text-center text-purple font-Lobster"> <strong>Unique in the world</strong></h4>
-                </div>
-                <div class="col-lg-3 text-center">
-                    <img class="service__img text-purple " src="{{ asset('/images/mwl.jpg') }}"
-                        alt="{{ $category->name }}">
-                    <h4 class="mt-3 text-center text-purple font-Lobster"> <strong>Made with Love</strong></h4>
-                </div>
-                <div class="col-lg-3 text-center">
-                    <img class="service__img" src="{{ asset('/images/made.png') }}" alt="{{ $category->name }}">
-                    <h4 class="mt-3 text-center font-Lobster"> <strong>100% hand made</strong></h4>
-                </div>
+
+    <div class="container">
+        <div class="row flex-wrap">
+            <div class="col-sm-6 col-md-5 col-lg-3  text-center">
+                <img class="service__img" src="{{ asset('/images/download.jfif') }}" alt="{{ $category->name }}">
+                <h4 class="mt-3 text-center text-purple font-Lobster"> <strong>Fast Delivery</strong></h4>
+            </div>
+            <div class="col-sm-6 col-md-5 col-lg-3 text-center">
+                <img class="service__img" src="{{ asset('/images/download.png') }}" alt="{{ $category->name }}">
+                <h4 class="mt-3 text-center text-purple font-Lobster"> <strong>Unique in the world</strong></h4>
+            </div>
+            <div class=" col-sm-6 col-md-5 col-lg-3 text-center">
+                <img class="service__img text-purple " src="{{ asset('/images/mwl.jpg') }}" alt="{{ $category->name }}">
+                <h4 class="mt-3 text-center text-purple font-Lobster"> <strong>Made with Love</strong></h4>
+            </div>
+            <div class="col-sm-6 col-md-5 col-lg-3 text-center">
+                <img class="service__img" src="{{ asset('/images/made.png') }}" alt="{{ $category->name }}">
+                <h4 class="mt-3 text-center font-Lobster"> <strong>100% hand made</strong></h4>
             </div>
         </div>
-    </section>
+    </div>
+
 </main>
 
 

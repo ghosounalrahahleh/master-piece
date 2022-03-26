@@ -1,5 +1,5 @@
 @extends('adminDashboard.layouts.master')
-
+@section('title','Manage orders')
 @section('content')
 <div class="container-fluid py-4">
     <div class="row">
@@ -34,7 +34,7 @@
             <div class="card z-index-0 fadeIn3 fadeInBottom">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                     <div class="purple bg-gradient-primary  shadow-primary border-radius-lg py-3 pe-1">
-                        <h5 class="text-white text-capitalize ps-3">Roles Form</h5>
+                        <h5 class="text-white text-capitalize ps-3">Order Status Form</h5>
 
                     </div>
                 </div>
@@ -42,8 +42,8 @@
                     <form class="text-start" method="POST" action="@if($update === true){{ route('orders.update',$order->id) }} @endif
                     ">
                         @csrf
+                        <label class="form-label">Order Status</label>
                         <div class="input-group input-group-outline mb-3">
-                            <label class="form-label"></label>
                             <select class="form-control form-select w-100 p-2" name="status">
                                 @if ($update===true)
                                 <option class='w-100' value='{{ $order->status}}' selected>

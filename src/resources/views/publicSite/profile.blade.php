@@ -48,6 +48,12 @@
                                     <h5>{{ auth()->user()->email }}</h5>
                                 </div>
                             </div>
+                            <div class="row w-75  my-2">
+                                <div class="col-sm-4 col-lg-3 col-md-5 ">Phone : </div>
+                                <div class="col-sm-8 col-lg-3 col-md-7 ">
+                                    <h5>{{ auth()->user()->phone }}</h5>
+                                </div>
+                            </div>
                             <div class="row my-2 m-auto w-lg-25 w-md-25  ">
                                 <a href="{{ route('userProfile.edit',auth()->user()->id) }}"
                                     class="btn btn-purple float-end">Edit
@@ -83,7 +89,7 @@
                                     <div class="col-md-10 m-auto">
                                         <label for="email" class=" col-form-label text-purple ">{{ __('E-Mail Address')
                                             }}</label>
-                                        <input id="email" type="email"
+                                        <input id="email" type="email" disabled
                                             class="form-control @error('email') is-invalid @enderror" name="email"
                                             value="{{ auth()->user()->email}}" required autocomplete="email">
                                         @error('email')
@@ -93,6 +99,20 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-10 m-auto">
+                                        <label for="phone" class=" col-form-label text-purple ">{{ __('Phone Number')
+                                            }}</label>
+                                        <input id="phone" type="number" class="form-control @error('phone') is-invalid @enderror" name="phone"
+                                            value="{{ auth()->user()->phone}}" >
+                                        @error('phone')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
                                 <div class="row mb-3">
                                     <div class="col-md-10 m-auto">
                                         <label for="password" class=" col-form-label text-purple ">{{ __('New Password')

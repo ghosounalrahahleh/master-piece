@@ -1,5 +1,5 @@
 @extends('adminDashboard.layouts.master')
-
+@section('title','Manage owners')
 @section('content')
 <div class="container-fluid py-4">
     <div class="row">
@@ -43,16 +43,16 @@
                         enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="user_id" value="2">
+                        <label class="form-label">Company Name</label>
                         <div class=" input-group input-group-outline my-3">
-                            <label class="form-label"></label>
-                            <input type="text" name="company_name" class="form-control" placeholder="Company Name"
+                            <input type="text" name="company_name" class="form-control" placeholder=""
                                 value="@if($update==true){{ $owner->company_name }}
                             @endif">
                         </div>
 
+                        <label class="form-label">Company Email</label>
                         <div class="input-group input-group-outline my-3">
-                            <label class="form-label"></label>
-                            <input type="email" class="form-control" name="email" placeholder="Company Email" value="@if($update==true){{ $owner->email }}
+                            <input type="email" class="form-control" name="email" placeholder="" value="@if($update==true){{ $owner->email }}
                             @endif">
                         </div>
 
@@ -60,15 +60,15 @@
                             <input type="file" name="logo" class="form-control">
                         </div>
 
+                        <label class="form-label">Phone</label>
                         <div class="input-group input-group-outline mb-3">
-                            <label class="form-label"></label>
-                            <input type="text" class="form-control" name="phone" placeholder="Phone" value="@if($update==true){{ $owner->phone }}
+                            <input type="text" class="form-control" name="phone" placeholder="" value="@if($update==true){{ $owner->phone }}
                             @endif">
                         </div>
 
+                        <label class="form-label">Address</label>
                         <div class="input-group input-group-outline mb-3">
-                            <label class="form-label"></label>
-                            <input type="text" class="form-control" name="address" placeholder="Address" value="@if($update==true){{ $owner->address }}
+                            <input type="text" class="form-control" name="address" placeholder="" value="@if($update==true){{ $owner->address }}
                             @endif">
                         </div>
 
@@ -77,8 +77,7 @@
                             <div class=" col-4 ">
                                 <div class="text-center">
                                     <button type="submit" class="btn purple bg-gradient-primary w-100 my-4 h6 mb-2">Add
-                                        to
-                                        Owners</button>
+                                        to Owners</button>
                                 </div>
                             </div>
                         </div>

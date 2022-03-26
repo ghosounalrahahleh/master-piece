@@ -1,17 +1,8 @@
 @extends('adminDashboard.layouts.master')
-
+@section('title','Manage products')
 @section('content')
 <div class="container-fluid pb-4">
-    {{-- <nav aria-label="breadcrumb ">
-        <ol class="breadcrumb bg-transparent mb-3 pb-0 pt-1 px-0 me-sm-6 me-5">
-            <li class="breadcrumb-item text-sm"><a class="opacity-9 text-dark"
-                    href="{{ route('statics.index') }}">Dashboard &nbsp; </a>
-            </li>
-            <a href="{{ route('products.index') }}">
-                <li class="breadcrumb-item text-sm text-dark active opacity-9" aria-current="page"> / Products</li>
-            </a>
-        </ol>
-    </nav> --}}
+
     <div class="row justify-content-center">
         {{-- Form Start --}}
         <div class="col-lg-12 col-md-8 col-12 mx-auto my-5">

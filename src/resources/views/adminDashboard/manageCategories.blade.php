@@ -1,5 +1,5 @@
 @extends('adminDashboard.layouts.master')
-
+@section('title','Manage categories')
 @section('content')
 <div class="container-fluid py-4">
     <div class="row">
@@ -42,9 +42,9 @@
                         action="@if($update === true){{ route('categories.update',$category->id) }} @else {{ route('categories.store') }} @endif"
                         enctype="multipart/form-data">
                         @csrf
+                        <label class="form-label">Category Name</label>
                         <div class="input-group input-group-outline my-3">
-                            <label class="form-label"></label>
-                            <input type="text" name="name" class="form-control" placeholder="Category Name" value="@if($update==true){{ $category->name }}
+                            <input type="text" name="name" class="form-control" placeholder="" value="@if($update==true){{ $category->name }}
                             @endif">
                         </div>
 
@@ -57,8 +57,7 @@
                             <div class=" col-4 ">
                                 <div class="text-center">
                                     <button type="submit" class="btn purple bg-gradient-primary w-100 my-4 h6 mb-2">Add
-                                        to
-                                        Categories</button>
+                                        to Categories</button>
                                 </div>
                             </div>
                         </div>

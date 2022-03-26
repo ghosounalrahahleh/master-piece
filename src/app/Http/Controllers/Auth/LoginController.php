@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
+
 class LoginController extends Controller
 {
     /*
@@ -38,6 +42,11 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    public function showLoginForm()
+    {
+        Session::put('url.intended', URL::previous());
+        return view('auth.login');
+    }
 
     public function login(Request $request)
     {
@@ -53,7 +62,7 @@ class LoginController extends Controller
             if (auth()->user()->role_id == 1 || auth()->user()->role_id == 2) {
                 return redirect()->route('statics.index') ;
             }else{
-                return redirect()->route('home');
+                return Redirect::to(Session::get('url.intended'));
             }
         }else{
             return redirect()->route('login')

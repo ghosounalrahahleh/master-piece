@@ -78,7 +78,8 @@ class UserProfileController extends Controller
      */
     public function edit($id)
     {
-        return view('publicSite.profile');
+        $show   = false;
+        return view('publicSite.profile',compact('show'));
     }
 
     /**
@@ -91,13 +92,15 @@ class UserProfileController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name'      => 'required',
-            'email'     => 'required| email ',
+            'name'  => 'required',
+            'phone' => 'required|digits:10',
         ]);
-        $user = User::find($id);
+         $user = User::find($id);
+        if ($request->password != null) {
+            $user->password = Hash::make($request->password);
+        }
         $user->name     = $request->name;
-        $user->email    = $request->email;
-        $user->password = $request->password != null ? Hash::make($request->password) :  $user->password;
+        $user->phone    = $request->phone ?? $user->phone;
         $user->role_id  = auth()->user()->role_id;
         $user->update();
         session()->flash('message', "The user has been updated successfully");

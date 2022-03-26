@@ -1,5 +1,5 @@
 @extends('adminDashboard.layouts.master')
-
+@section('title','Admin profile')
 @section('content')
 <div class="container-fluid py-4">
     <div class="row">

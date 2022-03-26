@@ -1,5 +1,5 @@
 @extends('adminDashboard.layouts.master')
-
+@section('title','Manage user deyails')
 @section('content')
 <div class="container-fluid pb-4">
     <!-- Basic Tables start -->

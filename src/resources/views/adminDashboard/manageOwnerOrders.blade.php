@@ -1,5 +1,5 @@
 @extends('adminDashboard.layouts.master')
-
+@section('title','Manage orders')
 @section('content')
 <div class="container-fluid py-4">
     <div class="row">
@@ -34,7 +34,7 @@
             <div class="card z-index-0 fadeIn3 fadeInBottom">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                     <div class="purple bg-gradient-primary  shadow-primary border-radius-lg py-3 pe-1">
-                        <h5 class="text-white text-capitalize ps-3">Order Form</h5>
+                        <h5 class="text-white text-capitalize ps-3">Owner Orders Form</h5>
 
                     </div>
                 </div>
