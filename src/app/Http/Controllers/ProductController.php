@@ -18,10 +18,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        if (auth()->user()->role_id === 2) {
+        if (auth()->user()->role_id == 2) {
             $products   = Product::where('owner_id', auth()->user()->id)->orderBy('id', 'desc')->paginate(15);
         } else {
-            $products   = Product::orderBy('id', 'desc')->paginate(15);
+            $products   = Product::all();
         }
         //dd($products);
         $categories = Category::all();

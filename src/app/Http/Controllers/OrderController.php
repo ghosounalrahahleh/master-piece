@@ -30,7 +30,7 @@ class OrderController extends Controller
             return view('adminDashboard.manageOwnerOrders', compact('orders', 'update'));
         } else {
 
-            $orders = Order::orderBy('id', 'desc')->paginate(15);
+            $orders = Order::orderBy('id', 'desc')->get();
             return view('adminDashboard.manageOrders', compact('orders', 'update'));
         }
 

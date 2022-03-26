@@ -18,7 +18,7 @@ class OwnerInfoController extends Controller
     public function index()
     {
         $update     = false;
-        $ownersInfo = OwnerInfo::paginate(5);
+        $ownersInfo = OwnerInfo::all();
         return view('adminDashboard.manageOwners', compact('ownersInfo', 'update'));
     }
 

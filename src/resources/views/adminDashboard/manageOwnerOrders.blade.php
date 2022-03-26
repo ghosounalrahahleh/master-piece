@@ -91,7 +91,7 @@
                 <section class="section">
 
                     <div class="card">
-                        <div class="card-body">
+                        <div class="card-body table-responsive">
                             @if ($orders===[])
                             <h2 class="text-center">There is no orders yet!</h2>
                             @else

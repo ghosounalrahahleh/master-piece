@@ -91,7 +91,7 @@
                 <!-- Basic Tables start -->
                 <section class="section">
                     <div class="card">
-                        <div class="card-body">
+                        <div class="card-body table-responsive">
                             <table class="table" id="table1">
                                 <thead>
                                     <th class="font-weight-bolder">#</th>

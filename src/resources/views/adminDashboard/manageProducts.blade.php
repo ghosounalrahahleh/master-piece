@@ -213,7 +213,7 @@
                 <!-- Basic Tables start -->
                 <section class="section">
                     <div class="card">
-                        <div class="card-body">
+                        <div class="card-body table-responsive">
                             <table class="table" id="table1">
                                 <thead>
                                     <tr>
@@ -234,7 +234,7 @@
                                     <tr>
                                         <td class="ps-4"><img width="100px" height="100px"
                                                 src="{{ asset($product->main_image) }}" alt="product image"></td>
-                                        <td class="ps-4">{{ $product->name }} </td>
+                                        <td class="ps-4  text-break">{{ $product->name }} </td>
                                         <td class="ps-4">{{ $product->price }} </td>
                                         <td class="ps-4"> {{ $product->is_onSale }}</td>
                                         <td class="ps-4"> {{ $product->is_new}}</td>

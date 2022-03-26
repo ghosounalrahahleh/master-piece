@@ -17,7 +17,7 @@ class CommentController extends Controller
     public function index()
     {
         $update   = false;
-        $comments = Comment::paginate(10);
+        $comments = Comment::all();
         return view('adminDashboard.mangeComments',compact('comments','update'));
     }
 

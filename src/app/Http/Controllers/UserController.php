@@ -21,7 +21,7 @@ class UserController extends Controller
     {
 
         $update = false;
-        $users  = User::orderBy('id', 'desc')->paginate(15);
+        $users  = User::orderBy('id', 'desc')->get();
         $roles  = Role::all();
         return view('adminDashboard.manageUsers', compact('update', 'users', 'roles'));
     }
