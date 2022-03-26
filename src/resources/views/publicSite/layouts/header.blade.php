@@ -140,7 +140,7 @@
                             </a>
                             @else
                             <a class="dropdown-item" href="{{ route('users.index') }}">
-                                {{ __('Profile') }}
+                                {{ __('Dashboard') }}
                             </a>
                             @endif
 

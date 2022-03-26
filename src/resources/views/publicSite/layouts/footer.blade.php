@@ -20,12 +20,11 @@
                 <div class="ftco-footer-widget mb-5 ml-md-4">
                     <h2 class="ftco-heading-2">Categories</h2>
                     <ul class="list-unstyled">
-                        @for ($i = 0; $i < 4; $i++)
-                        @if(count($categories))
-                        <li><a class="text-decoration-none" href="{{ route('singleCategory',$categories[$i]->id )}}"><span class="ion-ios-arrow-round-forward mr-2"></span>{{ $categories[$i]->name }}</a></li>
-                        @endif
+                        <li><a class="text-decoration-none" href="{{ route('singleCategory',1)}}"><span class="ion-ios-arrow-round-forward mr-2"></span>Embroidery</a></li>
+                        <li><a class="text-decoration-none" href="{{ route('singleCategory',2 )}}"><span class="ion-ios-arrow-round-forward mr-2"></span>Crochet</a></li>
+                        <li><a class="text-decoration-none" href="{{ route('singleCategory',3 )}}"><span class="ion-ios-arrow-round-forward mr-2"></span>Paper crafts</a></li>
+                        <li><a class="text-decoration-none" href="{{ route('singleCategory',4 )}}"><span class="ion-ios-arrow-round-forward mr-2"></span>Clay crafts</a></li>
 
-                        @endfor
                     </ul>
                 </div>
             </div>

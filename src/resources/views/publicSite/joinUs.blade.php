@@ -1,7 +1,7 @@
 @extends('publicSite.layouts.master')
 @section('title','Join Us')
 @section('content')
-<div class="container my-5 w-lg-50 w-md-50 w-sm-100" id="joinUs__container">
+<div class=" ftco-section container my-5 w-lg-50 w-md-50 w-sm-100" id="joinUs__container">
     <div class="row justify-content-center">
         <div class="col-md-6 col-sm-10 rounded ">
             <div class="card py-5">

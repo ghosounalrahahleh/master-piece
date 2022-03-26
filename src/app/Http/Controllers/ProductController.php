@@ -105,9 +105,9 @@ class ProductController extends Controller
         $product         = Product::find($id);
         $comments        = Comment::where('product_id', $id)->paginate(5);
         $count           = Comment::where('product_id', $id)
-                            ->where('status', 'Delivered')
+                            ->where('status', 'Approved')
                             ->count();
-                           
+
         $relatedProducts = Product::where('category_id',$product->category_id)->take(10)->get();
         return view('publicSite.singleProduct', compact('product', 'comments', 'count', 'relatedProducts'));
     }

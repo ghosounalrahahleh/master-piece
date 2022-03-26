@@ -184,7 +184,7 @@
                     </div>
                     @else
                     <div class="d-flex flex-column align-items-center m-auto ">
-                    <h1 class='cart-notation my-5'>Thers is no Order Yet!</h1>
+                    <h1 class='cart-notation my-5'>There is no Orders Yet!</h1>
                     <a href="{{ route('allCategories') }}" class='btn btn-purple p-2'>Go shopping </a>
                     </div>
                     @endif
